@@ -1,34 +1,8 @@
 Rails.application.routes.draw do
-  get 'sessions/new'
-  get 'sessions/create'
-  get 'sessions/destroy'
-  get 'carts/index'
-  get 'carts/show'
-  get 'carts/new'
-  get 'carts/create'
-  get 'carts/edit'
-  get 'carts/update'
-  get 'carts/destroy'
-  get 'customers/index'
-  get 'customers/show'
-  get 'customers/new'
-  get 'customers/create'
-  get 'customers/edit'
-  get 'customers/update'
-  get 'customers/destroy'
-  get 'stores/index'
-  get 'stores/show'
-  get 'stores/new'
-  get 'stores/create'
-  get 'stores/edit'
-  get 'stores/update'
-  get 'stores/destroy'
-  get 'products/index'
-  get 'products/show'
-  get 'products/new'
-  get 'products/create'
-  get 'products/edit'
-  get 'products/update'
-  get 'products/destroy'
+
+  resources :customers
+  resources :stores
+  resources :products
+  resources :carts
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
