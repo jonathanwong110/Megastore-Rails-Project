@@ -1,7 +1,7 @@
 class StoresController < ApplicationController
   
   def index
-    @store = Store.all
+    @stores = Store.all
   end
   
   def new
@@ -10,6 +10,12 @@ class StoresController < ApplicationController
 
   def create
     @store = Store.new(store_params)
+    if @store.valid?
+      @store.save
+      redirect_to new_store_path
+    else
+      render 'new'
+    end
   end
 
   private
