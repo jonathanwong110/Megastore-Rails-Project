@@ -12,7 +12,7 @@ class ProductsController < ApplicationController
   end
 
   def create
-    @product = Product.new(params)
+    @product = Product.new(product_params)
   end
 
   def edit
@@ -36,7 +36,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(product).permit(:title, :price, :description, :category, :store_id)
+    params.require(:product).permit(:title, :price, :description, :category, :store_id)
   end
 
   def set_product!
