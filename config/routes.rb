@@ -1,8 +1,14 @@
 Rails.application.routes.draw do
 
-  resources :customers
-  resources :stores
+  resources :customers, only: [:new, :create]
+  resources :stores, only: [:index, :new, :create]
   resources :products
   resources :carts
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  root 'static_pages#home'
+  get '/login' => 'sessions#new'
+  get '/signup' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  post '/logout' => 'sessions#destroy'
+
 end
