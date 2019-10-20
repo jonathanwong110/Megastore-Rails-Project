@@ -15,8 +15,9 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.valid?
       @user.save
+      redirect_to user_path(@user)
     else
-      redirect_to new_user_path
+      redirect_to 'new'
     end
     session[:user_id] = @user.id
   end
@@ -26,6 +27,11 @@ class UsersController < ApplicationController
   end
 
   def update
+    @user = User.find(params[:id])
+    if @user.update_attributes(user_params)
+      redirect_to @user
+    end
+    redirect_to 'edit'
   end
 
   def destroy
@@ -37,7 +43,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, :email, :password_digest, :store)
+    params.require(:user).permit(:username, :email, :password_confirmation, :store)
   end
 
 end

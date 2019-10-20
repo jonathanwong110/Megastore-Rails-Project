@@ -1,5 +1,5 @@
 class Product < ApplicationRecord
-    belongs_to :store
+    belongs_to :customer
     belongs_to :cart
 
     validates :title, presence: true

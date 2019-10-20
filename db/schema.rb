@@ -23,7 +23,6 @@ ActiveRecord::Schema.define(version: 2019_10_20_194917) do
     t.integer "price"
     t.string "description"
     t.string "category"
-    t.integer "store_id"
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
