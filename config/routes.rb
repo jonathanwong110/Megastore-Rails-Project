@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :customers, only: [:new, :create]
-  resources :stores, only: [:index, :new, :create]
+  resources :users
   resources :products
   resources :carts
 
