@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   root 'static_pages#home'
   get '/login' => 'sessions#new'
-  get '/signup' => 'sessions#new'
+  get '/signup' => 'users#new'
   post '/login' => 'sessions#create'
   post '/logout' => 'sessions#destroy'
 

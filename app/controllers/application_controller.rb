@@ -1,11 +1,11 @@
 class ApplicationController < ActionController::Base
 
     def current_user
-        !!session[:customer_id] || !!session[:store_id]
+        !!session[:user_id]
     end
 
     def require_login
-        Customer.find(session[:customer_id]) || Store.find(session[:store_id])
+        User.find(session[:user_id])
     end
 
 end
