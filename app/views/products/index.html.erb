@@ -1,6 +1,11 @@
-<%= @products.each do |product| %>
-    <%= product.title %>
-    <%= product.price %>
-    <%= product.description %>
-    <%= product.category %>
+<h2>List of all Products</h2>
+
+<% @products.each do |product| %>
+    ___________________________ <br></br>
+    <b> Title: </b> <%= product.title %> <br></br>
+    <b> Price: </b> <%= product.price %> <br></br>
+    <b> Description: </b> <%= product.description %> <br></br>
+    <b> Category: </b> <%= product.category %> <br></br>
+    <b> Store: </b> <%= product.user.username %> <br></br>
+    ___________________________ 
 <% end %>
