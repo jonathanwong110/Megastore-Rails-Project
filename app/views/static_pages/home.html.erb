@@ -1,4 +1,9 @@
 <h1> Welcome to MegaStore</h1>
 
 <%= link_to "Log In", login_path %> <br></br>
-<%= link_to "Sign Up", signup_path %><br></br>
+<%= link_to "Sign Up", signup_path %> <br></br>
+<% if logged_in? %>
+    <%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
+        <input type=submit value='Log Out'>
+    <% end %>
+<% end %>

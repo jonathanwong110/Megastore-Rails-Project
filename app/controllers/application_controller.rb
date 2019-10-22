@@ -1,11 +1,19 @@
 class ApplicationController < ActionController::Base
+  protect_from_forgery with: :exception
+  include SessionsHelper
 
-    def current_user
-        !!session[:user_id]
+  def logged_in?
+    !!session[:user_id]
+  end
+  
+  def current_user
+    User.find(session[:user_id])
+  end
+  
+  def require_login
+    unless logged_in?
+      render :new
     end
-
-    def require_login
-        User.find(session[:user_id])
-    end
+  end
 
 end
