@@ -1,3 +1,6 @@
 <% @users.each do |user| %>
-    <%= user.username %>
+    Username: <%= user.username %> <br></br>
+    <% if user.store == true %>
+        Store
+    <% end %>
 <% end %>

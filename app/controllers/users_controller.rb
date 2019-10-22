@@ -15,11 +15,10 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.valid?
       @user.save
-      redirect_to user_path(@user)
+      redirect_to users_path
     else
-      redirect_to 'new'
+      render :new
     end
-    session[:user_id] = @user.id
   end
 
   def edit
@@ -28,22 +27,24 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user.update_attributes(user_params)
+    if @user.update(user_params)
       redirect_to @user
     end
-    redirect_to 'edit'
+    render :edit
   end
 
   def destroy
+    @user = User.find(params[:id])
     if session[:user_id] = @user.id
       session.delete :user
     end
   end
 
+  
   private
 
   def user_params
-    params.require(:user).permit(:username, :email, :password_confirmation, :store)
+    params.require(:user).permit(:username, :email, :password, :store)
   end
 
 end

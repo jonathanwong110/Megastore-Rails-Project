@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 2019_10_20_194917) do
     t.string "username"
     t.string "email"
     t.string "password_digest"
-    t.boolean "store", default: false
+    t.boolean "store"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

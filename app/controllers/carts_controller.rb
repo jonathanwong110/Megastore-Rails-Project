@@ -10,7 +10,7 @@ class CartsController < ApplicationController
 
   def update
     @cart = Cart.find(params[:id])
-    if @cart.update_attributes(cart_params)
+    if @cart.update(cart_params)
       @cart.save
     end
     redirect_to carts_path(@cart)
