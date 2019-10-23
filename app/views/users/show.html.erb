@@ -1,6 +1,6 @@
-Username: <%= @user.username %>
+<h1>Viewing Store: <%= @user.username %></h1>
 
-<% @user.products.each do |product| %>
+<% @products.each do |product| %>
     <b> Title: </b> <%= product.title.capitalize %> <br></br>
     <b> Price: </b> <%= product.price %> <br></br>
     <b> Description: </b> <%= product.description.capitalize %> <br></br>
