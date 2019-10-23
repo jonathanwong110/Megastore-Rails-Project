@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   post '/logout' => 'sessions#destroy'
+  get '/cart' => 'carts#index'
+  post '/cart' => 'cart#add_to_cart'
+
 
   resources :users
   resources :products

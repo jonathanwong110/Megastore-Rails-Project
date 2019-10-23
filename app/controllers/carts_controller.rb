@@ -1,7 +1,7 @@
 class CartsController < ApplicationController
 
-  def show
-    @cart = Cart.find(params[:id])
+  def index
+    @cart = current_cart
   end
 
   def edit
@@ -20,4 +20,9 @@ class CartsController < ApplicationController
     @cart = Cart.find(params[:id])
     @cart.clear
   end
+  
+  def add_to_cart
+    current_cart.add_product(params[:product_id])
+  end
+
 end
