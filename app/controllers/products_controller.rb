@@ -17,26 +17,33 @@ class ProductsController < ApplicationController
     if @product.valid?
       @product.save
       redirect_to products_path
+      flash[:notice] = "Product was created successfully!"
     else
       render :new
     end
   end
 
   def edit
+    @product = Product.find(params[:id])
   end
 
   def update
     @product = Product.find(params[:id])
     if @product.update(product_params)
       redirect_to @product
+      flash[:notice] = "Product was updated successfully!"
+    else
+      render :edit
     end
-    render :edit
   end
 
   def destroy
     @product = Product.find(params[:id])
-    @product.destroy
-    redirect_to products_path
+    if session[:user_id] == @product.user_id
+      @product.destroy
+      flash[:notice] = "Product was deleted successfully!"
+      redirect_to products_path
+    end
   end
 
   private

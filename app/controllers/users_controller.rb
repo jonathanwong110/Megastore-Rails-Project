@@ -19,6 +19,7 @@ class UsersController < ApplicationController
       @user.save
       @cart = Cart.create!(user_id: @user.id)
       session[:user_id] = @user.id
+      flash[:notice] = "Registration was successful!"
       redirect_to users_path
     else
       render :new
@@ -33,15 +34,19 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.valid?
       @user.update(user_params)
-      redirect_to @user
+      flash[:notice] = "Profile was updated successfully!"
+      redirect_to users_path
+    else
+      render :edit
     end
-    render :edit
   end
 
   def destroy
     @user = User.find(params[:id])
-    if session[:user_id] = @user.id
+    if session[:user_id] == @user.id
       session.delete :user
+      flash[:notice] = "User was deleted successfully!"
+      render :/
     end
   end
 

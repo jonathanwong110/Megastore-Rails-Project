@@ -1,11 +1,13 @@
 <h2>List of all Products</h2>
+<%= flash[:notice] %> <br></br>
+___________________________ <br></br>
 
 <% @products.each do |product| %>
-    ___________________________ <br></br>
-    <b> Title: </b> <%= product.title %> <br></br>
+    <b> Title: </b> <%= product.title.capitalize %> <br></br>
     <b> Price: </b> <%= product.price %> <br></br>
-    <b> Description: </b> <%= product.description %> <br></br>
-    <b> Category: </b> <%= product.category %> <br></br>
-    <b> Store: </b> <%= product.user.username %> <br></br>
-    ___________________________ 
+    <b> Description: </b> <%= product.description.capitalize %> <br></br>
+    <b> Category: </b> <%= product.category.capitalize %> <br></br>
+    <b> Store: </b> <%= link_to product.user.username, user_path(product.user_id) %> <br></br>
+    <%= link_to "View Product", product_path(product) %> <br></br>
+    ___________________________ <br></br>
 <% end %>
