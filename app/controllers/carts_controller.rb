@@ -1,8 +1,10 @@
 class CartsController < ApplicationController
+  before_action :require_login
 
   def index
-    @cart = current_cart
+    @cart = @current_cart
   end
+
 
   def edit
     @cart = Cart.find(params[:id])
@@ -17,12 +19,13 @@ class CartsController < ApplicationController
   end
 
   def destroy
-    @cart = Cart.find(params[:id])
+    @cart = @current_cart
     @cart.clear
+    redirect_to root_url
   end
   
   def add_to_cart
-    current_cart.add_product(params[:product_id])
+    @current_cart.add_product(params[:product_id])
   end
 
 end
