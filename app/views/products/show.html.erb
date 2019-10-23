@@ -5,5 +5,5 @@ ___________________________ <br></br>
 <b> Category: </b> <%= @product.category.capitalize %> <br></br>
 <b> Store: </b> <%= @product.user.username.upcase %> <br></br>
 ___________________________ <br></br>
-
+<%= link_to "Write a Review for this Product!", new_review_path %>
 <%= flash[:notice] %>
