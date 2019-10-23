@@ -1,9 +1,9 @@
 ___________________________ <br></br>
-<b> Title: </b> <%= @product.title %> <br></br>
+<b> Title: </b> <%= @product.title.capitalize %> <br></br>
 <b> Price: </b> <%= @product.price %> <br></br>
-<b> Description: </b> <%= @product.description %> <br></br>
-<b> Category: </b> <%= @product.category %> <br></br>
-<b> Store: </b> <%= @product.user.username %> <br></br>
+<b> Description: </b> <%= @product.description.capitalize %> <br></br>
+<b> Category: </b> <%= @product.category.capitalize %> <br></br>
+<b> Store: </b> <%= @product.user.username.upcase %> <br></br>
 ___________________________ <br></br>
 
 <%= flash[:notice] %>

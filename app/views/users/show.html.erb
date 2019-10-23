@@ -1,1 +1,12 @@
 Username: <%= @user.username %>
+
+<% @user.products.each do |product| %>
+    <b> Title: </b> <%= product.title.capitalize %> <br></br>
+    <b> Price: </b> <%= product.price %> <br></br>
+    <b> Description: </b> <%= product.description.capitalize %> <br></br>
+    <b> Category: </b> <%= product.category.capitalize %> <br></br>
+    <b> Store: </b> <%= link_to product.user.username, user_path(product.user_id) %> <br></br>
+    <%= link_to "View Product", product_path(product) %> <br></br>
+    ___________________________ <br></br>
+<% end %>
+

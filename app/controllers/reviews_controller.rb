@@ -11,10 +11,11 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    @review = Review(review_params)
+    @review = Review.new(review_params)
     if @review.valid?
       @review.save
       redirect_to reviews_path
+      flash[:notice] = "Review was posted!"
     else
       render :new
     end
@@ -38,6 +39,10 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     if current_user == @review.user_id
       @review.destroy
+      flash[:notice] = "Review was deleted!"
+      redirect_to root_url
+    else
+      render :destroy
     end
   end
 

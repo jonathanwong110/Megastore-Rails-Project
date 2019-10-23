@@ -43,6 +43,8 @@ class ProductsController < ApplicationController
       @product.destroy
       flash[:notice] = "Product was deleted successfully!"
       redirect_to products_path
+    else
+      render :destroy
     end
   end
 
