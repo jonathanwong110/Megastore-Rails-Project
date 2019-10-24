@@ -7,7 +7,7 @@
 
 <h2> View Your Cart </h2>
 
-<% @products.each do |product| %>
+<% @cart.products.each do |product| %>
     <% if current_user.id == product.user_id %>
     <b> Title: </b> <%= product.title.capitalize %> <br></br>
     <b> Price: </b> <%= product.price %> <br></br>

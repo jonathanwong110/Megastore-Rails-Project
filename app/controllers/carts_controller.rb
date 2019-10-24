@@ -11,6 +11,8 @@ class CartsController < ApplicationController
 
   def update
     @cart = Cart.find(params[:id])
+    @product = Product.find(params[:id])
+    @cart << @product
     if @cart.update(cart_params)
       @cart.save
     end
@@ -25,6 +27,12 @@ class CartsController < ApplicationController
   
   def add_to_cart
     @current_cart.add_product(params[:product_id])
+  end
+
+  private
+
+  def cart_params
+    params.require(:cart).permit(:user_id)
   end
 
 end
