@@ -10,7 +10,6 @@ ___________________________ <br></br>
 <b> Price: </b> <%= @product.price %> <br></br>
 <b> Description: </b> <%= @product.description.capitalize %> <br></br>
 <b> Category: </b> <%= @product.category.capitalize %> <br></br>
-<b> Store: </b> <%= @product.user.username.upcase %> <br></br>
 <% if @product.user_id == current_user.id %>
     <%= link_to "Edit Product", edit_product_path(@product) %> <br></br>
 <% end %>

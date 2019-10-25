@@ -1,10 +1,4 @@
 class ReviewsController < ApplicationController
-  def index
-  end
-
-  def show
-    @review = @Review.find(params[:id])
-  end
 
   def new
     @review = Review.new
@@ -37,7 +31,7 @@ class ReviewsController < ApplicationController
 
   def destroy
     @review = Review.find(params[:id])
-    if current_user == @review.user_id
+    if current_user.id == @review.user_id
       @review.destroy
       flash[:notice] = "Review was deleted!"
       redirect_to root_url

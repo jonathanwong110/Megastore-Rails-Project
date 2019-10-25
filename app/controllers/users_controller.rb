@@ -8,9 +8,6 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @products = Product.where(user_id: @user)
-    if @user.store != true
-      redirect_to users_path
-    end
   end
 
   def new
