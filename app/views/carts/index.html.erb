@@ -7,13 +7,13 @@
 
 <h2> View Your Cart </h2>
 
-<% @cart.products.each do |product| %>
-    <% if current_user.id == product.user_id %>
-    <b> Title: </b> <%= product.title.capitalize %> <br></br>
-    <b> Price: </b> <%= product.price %> <br></br>
-    <b> Description: </b> <%= product.description.capitalize %> <br></br>
-    <b> Category: </b> <%= product.category.capitalize %> <br></br>
-    <b> Store: </b> <%= link_to product.user.username, user_path(product.user_id) %> <br></br>
+<% @cartproduct.each do |cartproduct| %>
+    <% if current_user.id == cartproduct.user_id %>
+    <b> Title: </b> <%= cartproduct.title.capitalize %> <br></br>
+    <b> Price: </b> <%= cartproduct.price %> <br></br>
+    <b> Description: </b> <%= cartproduct.description.capitalize %> <br></br>
+    <b> Category: </b> <%= cartproduct.category.capitalize %> <br></br>
+    <b> Store: </b> <%= link_to cartproduct.user.username, user_path(product.user_id) %> <br></br>
     <%= link_to "View Product", product_path(product) %> <br></br>
     ___________________________ <br></br>
     <% end %>

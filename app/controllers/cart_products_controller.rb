@@ -6,9 +6,11 @@ class CartProductsController < ApplicationController
   end
 
   def new
+    @cartproduct = CartProduct.new
   end
 
   def create
+    @cartproduct = CartProduct.create!
   end
 
   def edit
@@ -19,4 +21,11 @@ class CartProductsController < ApplicationController
 
   def destroy
   end
+
+  private
+
+  def cart_products_params
+    params.require(:cart_products_params).permit(:cart_id, :product_id)
+  end
+
 end

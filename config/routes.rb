@@ -1,13 +1,6 @@
 Rails.application.routes.draw do
 
-
-  get 'cart_products/index'
-  get 'cart_products/show'
-  get 'cart_products/new'
-  get 'cart_products/create'
-  get 'cart_products/edit'
-  get 'cart_products/update'
-  get 'cart_products/destroy'
+  resources :user_products
   root 'static_pages#home'
   get '/signup' => 'users#new'
   post '/signup' => 'users#create'
@@ -22,5 +15,6 @@ Rails.application.routes.draw do
   resources :products
   resources :carts
   resources :reviews
+  resources :cart_products
 
 end

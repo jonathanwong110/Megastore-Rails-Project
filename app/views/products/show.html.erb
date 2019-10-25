@@ -15,7 +15,7 @@ ___________________________ <br></br>
     <%= link_to "Edit Product", edit_product_path(@product) %> <br></br>
 <% end %>
 <% if @product.user_id != current_user.id %>
-    <%= button_to "Add to Cart", edit_cart_path(current_user), :method => :put %>  
+    <%= button_to "Add to Cart", cart_product_path(@product), :method => :put %>
 <% end %>
 ___________________________ <br></br>
 <%= link_to "Write a Review for this Product!", new_review_path %>

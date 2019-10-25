@@ -2,7 +2,8 @@ class CartsController < ApplicationController
   before_action :require_login
 
   def index
-    @cart = @current_cart
+    @cart = Cart.where(user_id: current_user.id)
+    @cartproduct = CartProduct.where(cart_id: current_user.id)
   end
 
   def edit
