@@ -1,4 +1,4 @@
-<h1> Welcome <%= current_user.username %>!  - <%= link_to "Home", root_url %> </h1>
+<h1> Welcome <%= current_user.username %>! - <%= link_to "Home", root_url %> </h1>
 
 <%= link_to "Users", users_path %> <br></br>
 <%= link_to "Products", products_path %> - <%= link_to "Create a New Product", new_product_path %><br></br>
@@ -7,14 +7,17 @@
 
 ___________________________ <br></br>
 <b> Title: </b> <%= @product.title.capitalize %> <br></br>
-<b> Price: </b> <%= @product.price %> <br></br>
+<b> Price: $</b> <%= @product.price %> <br></br>
 <b> Description: </b> <%= @product.description.capitalize %> <br></br>
 <b> Category: </b> <%= @product.category.capitalize %> <br></br>
 <% if @product.user_id == current_user.id %>
     <%= link_to "Edit Product", edit_product_path(@product) %> <br></br>
 <% end %>
 <% if @product.user_id != current_user.id %>
-    <%= button_to "Add to Cart", cart_product_path(@product), :method => :put %>
+    <%= form_for @cart do |f| %>
+        <%= f.hidden_field :product_id %>
+        <%= f.submit "Add to Cart" %>
+    <% end %>
 <% end %>
 ___________________________ <br></br>
 <%= link_to "Write a Review for this Product!", new_review_path %>

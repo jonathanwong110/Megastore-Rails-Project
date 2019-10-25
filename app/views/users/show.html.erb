@@ -1,4 +1,4 @@
-<h1>Viewing Store: <%= @user.username %> - <%= link_to "Home", root_url %> </h1>
+<h1>Viewing Seller: <%= @user.username %> - <%= link_to "Home", root_url %> </h1>
 
 <%= link_to "Users", users_path %> <br></br>
 <%= link_to "Products", products_path %> - <%= link_to "Create a New Product", new_product_path %><br></br>
@@ -8,10 +8,9 @@
 ___________________________ <br></br>
 <% @products.each do |product| %>
     <b> Title: </b> <%= product.title.capitalize %> <br></br>
-    <b> Price: </b> <%= product.price %> <br></br>
+    <b> Price: $</b> <%= product.price %> <br></br>
     <b> Description: </b> <%= product.description.capitalize %> <br></br>
     <b> Category: </b> <%= product.category.capitalize %> <br></br>
-    <b> Store: </b> <%= link_to product.user.username, user_path(product.user_id) %> <br></br>
     <%= link_to "View Product", product_path(product) %> <br></br>
     ___________________________ <br></br>
 <% end %>

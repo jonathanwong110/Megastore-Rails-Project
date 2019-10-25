@@ -3,7 +3,7 @@ class CartsController < ApplicationController
 
   def index
     @cart = Cart.where(user_id: current_user.id)
-    @cartproduct = CartProduct.where(cart_id: current_user.id)
+    @product = Product.find(params[:id])
   end
 
   def edit
@@ -13,7 +13,7 @@ class CartsController < ApplicationController
   def update
     @cart = Cart.find(params[:id])
     @product = Product.find(params[:id])
-    @cart << @product
+    @cart.products << @product
     if @cart.update(cart_params)
       @cart.save
     end
@@ -21,13 +21,8 @@ class CartsController < ApplicationController
   end
 
   def destroy
-    @cart = @current_cart
     @cart.clear
     redirect_to root_url
-  end
-  
-  def add_to_cart
-    @current_cart.add_product(params[:product_id])
   end
 
   private
