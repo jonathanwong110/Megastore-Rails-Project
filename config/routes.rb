@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   post '/logout' => 'sessions#destroy'
   #get '/cart' => 'carts#index'
-  #patch '/cart/:id' => 'carts#update', as: "add_to_cart"
+  #get '/carts' => 'carts#index'
 
   resources :users
   resources :products
