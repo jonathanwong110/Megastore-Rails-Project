@@ -1,7 +1,0 @@
-<h1> Welcome <%= current_user.username %>! - <%= link_to "Home", root_url %> </h1>
-
-<% @cart.products.each do |product| %>
-    <b> Title: </b> <%= product.title.capitalize %> <br></br>
-    <b> Price: $</b> <%= product.price %> <br></br>
-    <b> Description: </b> <%= product.description.capitalize %> <br></br>
-<% end %>

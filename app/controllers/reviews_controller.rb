@@ -22,9 +22,10 @@ class ReviewsController < ApplicationController
 
   def update
     @review = Review.find(params[:id])
-    if @review.valid?
+    if @review.update(review_params)
       @review.save
-      redirect_to reviews_path
+      redirect_to product_path(@review.product_id)
+      flash[:notice] = "Review was updated successfully!"
     else
       render :edit
     end

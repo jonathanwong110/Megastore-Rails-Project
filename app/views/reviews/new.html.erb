@@ -1,5 +1,12 @@
 <h1> Welcome <%= current_user.username %>! - <%= link_to "Home", root_url %> </h1>
 
+<%= link_to "Sellers", users_path %> - <%= link_to "View Your Store", user_path(current_user.id) %><br></br> 
+<%= link_to "Products", products_path %> - <%= link_to "Create a New Product", new_product_path %><br></br>
+<%= link_to "Cart", carts_path %> <br></br>
+<%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
+  <input type=submit value='Log Out'>
+<% end %>
+
 <h2> Post a Review </h2>
 
 <%= form_for @review, url: { action: "create" } do |f| %>
