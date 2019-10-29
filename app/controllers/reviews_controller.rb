@@ -1,7 +1,8 @@
 class ReviewsController < ApplicationController
-
+  
   def new
     @review = Review.new
+    @product = Review.find(params[:product_id])
   end
 
   def create
@@ -34,7 +35,6 @@ class ReviewsController < ApplicationController
     if current_user.id == @review.user_id
       @review.destroy
       flash[:notice] = "Review was deleted!"
-      redirect_to root_url
     else
       render :destroy
     end

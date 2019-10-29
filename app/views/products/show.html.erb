@@ -21,4 +21,17 @@ ___________________________ <br></br>
     <% end %>
 <% end %>
 ___________________________ <br></br>
-<%= link_to "Write a Review for this Product!", new_review_path %>
+<% if @product.user_id != current_user.id %>
+    <%= link_to "Write a Review", {:controller => "reviews", :action => "new", :product_id => @product.id } %> <br></br>
+<% end %>
+<br></br>
+<% @product.reviews.each do |review| %>
+    <b> User: </b> <%= review.user.username %>
+    <b> Review: </b> <%= review.content %> <br></br>
+    <% if review.user.id == current_user.id %>
+        <%= link_to "Delete Review", review_path(review.id), method: :delete %> <br></br>
+    <% end %>
+    ___________________________ <br></br>
+    <br></br>
+<% end %>
+

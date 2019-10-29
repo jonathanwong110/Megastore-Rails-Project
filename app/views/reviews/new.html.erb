@@ -2,10 +2,11 @@
 
 <h2> Post a Review </h2>
 
-<%= form_for @review do |f| %>
+<%= form_for @review, url: { action: "create" } do |f| %>
     <%= f.label :content, "Review:" %>
     <%= f.text_field :content %> <br></br>
     <%= f.hidden_field :user_id, :value => current_user.id %>
+    <%= f.hidden_field :product_id, :value => @product.id %>
     <%= f.submit %>
 <% end %>
 
