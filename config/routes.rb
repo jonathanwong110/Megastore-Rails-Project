@@ -6,10 +6,9 @@ Rails.application.routes.draw do
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   post '/logout' => 'sessions#destroy'
-  #get '/cart' => 'carts#index'
-  #get '/carts' => 'carts#index'
+  get '/carts' => 'carts#show', as: 'carts'
 
-  resources :users
+  resources :users 
   resources :products
   resources :carts
   resources :reviews

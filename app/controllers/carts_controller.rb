@@ -1,10 +1,8 @@
 class CartsController < ApplicationController
   before_action :require_login
 
-  def index
-    @cart = Cart.where(id: current_user.id)
-    #byebug
-    @cartproducts = CartProduct.where(cart_id: current_user.id)
+  def show
+    @cart = Cart.find_by(user_id: current_user.id)
   end
 
   def edit
@@ -16,22 +14,23 @@ class CartsController < ApplicationController
     product_id = carthash[:product_id]
     @product = Product.find(product_id)
     @cart = Cart.find(params[:id])
-    #byebug
     @cart.products << @product
     if @cart.update(cart_params)
       @cart.save
     end
-    redirect_to carts_path(@cart)
+    redirect_to carts_path
   end
 
   def destroy
-    @cart.clear
+    @cart = Cart.find_by(user_id: current_user.id)
+    @cart.products.destroy_all
     redirect_to root_url
   end
 
   def delete
     @product = Product.find(params[:product_id])
-    @cart = Cart.find(params[:id])
+    @cart = Cart.find_by(user_id: current_user.id)
+    byebug
     if @cart.products.delete(@product)
       flash[:notice] = "Product was removed from the cart successfully"
     end
