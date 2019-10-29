@@ -6,11 +6,13 @@ Rails.application.routes.draw do
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   post '/logout' => 'sessions#destroy'
-  get '/carts' => 'carts#show', as: 'carts'
+  get '/cart' => 'carts#show', as: 'carts'
+  delete '/cartsproduct/:id' => 'carts#delete'
 
   resources :users 
   resources :products
   resources :carts
   resources :reviews
+  resources :cartproducts
 
 end

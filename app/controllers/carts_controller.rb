@@ -17,8 +17,9 @@ class CartsController < ApplicationController
     @cart.products << @product
     if @cart.update(cart_params)
       @cart.save
+      flash[:notice] = "Product was added successfully to the cart!"
     end
-    redirect_to carts_path
+    redirect_to product_path(@product)
   end
 
   def destroy
@@ -27,23 +28,10 @@ class CartsController < ApplicationController
     redirect_to root_url
   end
 
-  def delete
-    @product = Product.find(params[:product_id])
-    @cart = Cart.find_by(user_id: current_user.id)
-    byebug
-    if @cart.products.delete(@product)
-      flash[:notice] = "Product was removed from the cart successfully"
-    end
-  end
-
   private
 
   def cart_params
     params.require(:cart).permit(:user_id)
-  end
-
-  def current_cart
-    @cart = Cart.where(user_id: current_user.id)
   end
 
 end

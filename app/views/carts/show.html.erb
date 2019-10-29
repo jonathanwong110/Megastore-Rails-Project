@@ -17,6 +17,6 @@ ___________________________ <br></br>
     <b> Category: </b> <%= product.category.capitalize %> <br></br>
     <b> Store: </b> <%= link_to product.user.username, user_path(product.user) %> <br></br>
     <%= link_to "View Product", product_path(product) %> <br></br>
-    <%= link_to "Remove from Cart", cart_path(current_user), method: :delete %> <br></br>
+    <%= link_to "Remove from Cart", cartproduct_path(product.id), method: :delete %> <br></br>
     ___________________________ <br></br>
 <% end %>
