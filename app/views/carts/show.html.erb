@@ -9,7 +9,7 @@
 
 <h2> View Your Cart </h2>
 
-<%= link_to "Clear Cart", cart_path(current_user), method: :destroy %> <br></br>
+<%= link_to "Clear Cart", cart_path(current_user), method: :delete %> <br></br>
 ___________________________ <br></br>
 
 <% @cart.products.each do |product| %>

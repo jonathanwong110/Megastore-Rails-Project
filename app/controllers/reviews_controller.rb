@@ -2,14 +2,14 @@ class ReviewsController < ApplicationController
   
   def new
     @review = Review.new
-    @product = Review.find(params[:product_id])
+    @product = Product.find(params[:product_id])
   end
 
   def create
     @review = Review.new(review_params)
-    if @review.valid?
+    if @review.valid?(review_params)
       @review.save
-      redirect_to reviews_path
+      redirect_to product_path(@review.product_id)
       flash[:notice] = "Review was posted!"
     else
       render :new
@@ -35,6 +35,7 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     if current_user.id == @review.user_id
       @review.destroy
+      redirect_to product_path(@review.product_id)
       flash[:notice] = "Review was deleted!"
     else
       render :destroy
