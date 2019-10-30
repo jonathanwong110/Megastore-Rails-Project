@@ -6,7 +6,7 @@
 <%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
     <input type=submit value='Log Out'>
 <% end %>
-<%= flash[:notice] %> <br></br>
+<%= flash[:notice] %>
 
 <h2>List of all Products</h2>
 ___________________________ <br></br>
@@ -16,6 +16,7 @@ ___________________________ <br></br>
     <b> Price: $</b> <%= product.price %> <br></br>
     <b> Description: </b> <%= product.description.capitalize %> <br></br>
     <b> Category: </b> <%= product.category.capitalize %> <br></br>
+    <b> Seller: </b> <%= product.user.username %> <br></br>
     <%= link_to "View Product", product_path(product) %> <br></br>
     ___________________________ <br></br>
 <% end %>

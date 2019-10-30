@@ -32,16 +32,18 @@ class ProductsController < ApplicationController
   def update
     @product = Product.find(params[:id])
     if @product.update(product_params)
+      @product.save
       redirect_to @product
       flash[:notice] = "Product was updated successfully!"
     else
       render :edit
+      flash[:error] = "Please check all fields to make sure they're filled."
     end
   end
 
   def destroy
     @product = Product.find(params[:id])
-    if session[:user_id] == @product.user_id
+    if @product.user_id == current_user.id
       @product.destroy
       flash[:notice] = "Product was deleted successfully!"
       redirect_to products_path

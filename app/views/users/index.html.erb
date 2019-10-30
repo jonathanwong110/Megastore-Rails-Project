@@ -7,8 +7,12 @@
     <input type=submit value='Log Out'>
 <% end %>
 
+<%= flash[:notice] %>
+
 <h2>List of Sellers</h2>
 
 <% @users.each do |user| %>
-    <b>Seller: </b> <%= link_to user.username, user_path(user.id) %> <br></br>
+    <% if user.products != [] %>
+        <b>Seller: </b> <%= link_to user.username, user_path(user.id) %> <br></br>
+    <% end %>
 <% end %>
