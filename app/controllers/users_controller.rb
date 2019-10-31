@@ -3,11 +3,18 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
+    @product = Product.find_by(user_id: current_user.id)
   end
 
   def show
     @user = User.find(params[:id])
     @products = Product.where(user_id: @user)
+  end
+
+  def products_index
+    @user = Author.find(params[:id])
+    @products = @user.products
+    render template: 'products/index'
   end
 
   def new
@@ -29,6 +36,9 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    if @user.id != current_user.id
+      redirect_to root_url
+    end
   end
 
   def update

@@ -15,7 +15,8 @@ ___________________________ <br></br>
 <b> Category: </b> <%= @product.category.capitalize %> <br></br>
 <b> Seller: </b> <%= @product.user.username %> <br></br>
 <% if @product.user_id == current_user.id %>
-    <%= link_to "Edit Product", edit_product_path(@product) %> <br></br>
+    <%= link_to "Edit Product", edit_user_product_path(@product) %> | 
+    <%= link_to "Delete Product", user_product_path(@product.id), method: :delete %> <br></br>
 <% end %>
 
 <% if @product.user_id != current_user.id %>

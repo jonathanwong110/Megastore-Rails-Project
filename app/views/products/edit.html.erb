@@ -10,7 +10,7 @@
 
 <h2>Edit a Product</h2>
 
-<%= form_for @product do |f| %>
+<%= form_for @product, url: { action: "update"} do |f| %>
     <%= f.label :title, "Title:" %>
     <%= f.text_field :title %> <br></br>
     <%= f.label :price, "Price:" %>

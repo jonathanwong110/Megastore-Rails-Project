@@ -3,10 +3,14 @@ class CartsController < ApplicationController
 
   def show
     @cart = Cart.find_by(user_id: current_user.id)
+    @product = Product.find_by(user_id: current_user.id)
   end
 
   def edit
     @cart = Cart.find(params[:id])
+    if @cart.user_id != current_user.id
+      redirect_to root_url
+    end
   end
 
   def update
@@ -25,7 +29,7 @@ class CartsController < ApplicationController
   def destroy
     @cart = Cart.find_by(user_id: current_user.id)
     @cart.products.destroy_all
-    redirect_to root_url
+    redirect_to carts_path
   end
 
   private

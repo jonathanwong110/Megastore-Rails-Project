@@ -2,6 +2,7 @@ class ProductsController < ApplicationController
   
   def index
     @products = Product.all
+    @user = User.find_by(id: current_user.id)
   end
 
   def show
@@ -27,6 +28,9 @@ class ProductsController < ApplicationController
 
   def edit
     @product = Product.find(params[:id])
+    if @product.user_id != current_user.id
+      redirect_to product_path(@product)
+    end
   end
 
   def update
@@ -48,7 +52,7 @@ class ProductsController < ApplicationController
       flash[:notice] = "Product was deleted successfully!"
       redirect_to products_path
     else
-      render :destroy
+      redirect_to root_url
     end
   end
 
