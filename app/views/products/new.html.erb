@@ -19,7 +19,7 @@
     <%= f.label :category, "Category:" %>
     <%= f.text_field :category %> <br></br>
     <%= f.hidden_field :user_id, :value => current_user.id %>
-    <%= f.submit "Create Product" %>
+    <%= f.submit %>
 <% end %>
 
 <% if @product.errors.any? %>

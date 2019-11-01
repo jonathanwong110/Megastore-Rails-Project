@@ -8,12 +8,11 @@ Rails.application.routes.draw do
   post '/logout' => 'sessions#destroy'
   get '/cart' => 'carts#show', as: 'carts'
   delete '/cartsproduct/:id' => 'carts#delete'
-  #get 'users/:id/products' => 'users#show', as: 'users/:id'
 
   resources :users do
-    resources :products, :except => [:index]
+    resources :products, :except => [:index, :create]
   end
-  resources :products, only: [:index]
+  resources :products, only: [:index, :create]
   resources :carts
   resources :reviews
   resources :cartproducts

@@ -11,12 +11,6 @@ class UsersController < ApplicationController
     @products = Product.where(user_id: @user)
   end
 
-  def products_index
-    @user = Author.find(params[:id])
-    @products = @user.products
-    render template: 'products/index'
-  end
-
   def new
     @user = User.new
   end

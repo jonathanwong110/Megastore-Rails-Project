@@ -9,7 +9,7 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     if @review.valid?(review_params)
       @review.save
-      redirect_to product_path(@review.product_id)
+      redirect_to user_product_path(@review.product_id, @review)
       flash[:notice] = "Review was posted!"
     else
       render :new
@@ -22,9 +22,10 @@ class ReviewsController < ApplicationController
 
   def update
     @review = Review.find(params[:id])
+    @product = Review.find_by(product_id: current_user.id)
     if @review.update(review_params)
       @review.save
-      redirect_to product_path(@review.product_id)
+      redirect_to user_product_path(@review.product_id)
       flash[:notice] = "Review was updated successfully!"
     else
       render :edit
@@ -33,9 +34,10 @@ class ReviewsController < ApplicationController
 
   def destroy
     @review = Review.find(params[:id])
+    @product = Review.find_by(product_id: current_user.id)
     if current_user.id == @review.user_id
       @review.destroy
-      redirect_to product_path(@review.product_id)
+      redirect_to products_path
       flash[:notice] = "Review was deleted!"
     else
       render :destroy
