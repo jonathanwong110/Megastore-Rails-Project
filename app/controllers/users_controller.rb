@@ -61,10 +61,4 @@ class UsersController < ApplicationController
     params.require(:user).permit(:username, :email, :password)
   end
 
-  def require_login
-    unless logged_in?
-        render :new
-    end
-  end
-
 end

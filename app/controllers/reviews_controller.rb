@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+  before_action :require_login
   
   def new
     @review = Review.new
@@ -9,7 +10,7 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     if @review.valid?(review_params)
       @review.save
-      redirect_to user_product_path(@review.product_id, @review)
+      redirect_to user_product_path(@review.product.user, @review.product_id)
       flash[:notice] = "Review was posted!"
     else
       render :new
@@ -25,7 +26,7 @@ class ReviewsController < ApplicationController
     @product = Review.find_by(product_id: current_user.id)
     if @review.update(review_params)
       @review.save
-      redirect_to user_product_path(@review.product_id)
+      redirect_to user_product_path(@review.product.user, @review.product_id)
       flash[:notice] = "Review was updated successfully!"
     else
       render :edit
@@ -37,7 +38,7 @@ class ReviewsController < ApplicationController
     @product = Review.find_by(product_id: current_user.id)
     if current_user.id == @review.user_id
       @review.destroy
-      redirect_to products_path
+      redirect_to user_product_path(@review.product.user, @review.product_id)
       flash[:notice] = "Review was deleted!"
     else
       render :destroy

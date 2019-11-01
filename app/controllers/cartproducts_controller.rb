@@ -1,4 +1,6 @@
 class CartproductsController < ApplicationController
+  before_action :require_login
+  
     def destroy
         @product = Product.find(params[:id])
         @cart = Cart.find_by(user_id: current_user.id)

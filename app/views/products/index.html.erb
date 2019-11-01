@@ -17,6 +17,6 @@ ___________________________ <br></br>
     <b> Description: </b> <%= product.description.capitalize %> <br></br>
     <b> Category: </b> <%= product.category.capitalize %> <br></br>
     <b> Seller: </b> <%= product.user.username %> <br></br>
-    <%= link_to "View Product", user_product_path(product, product) %> <br></br>
+    <%= link_to "View Product", user_product_path(product.user, product) %> <br></br>
     ___________________________ <br></br>
 <% end %>
