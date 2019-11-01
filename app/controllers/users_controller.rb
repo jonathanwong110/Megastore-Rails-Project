@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @products = Product.where(user_id: @user)
+    @products = Product.where(user_id: current_user.id)
   end
 
   def new
@@ -51,7 +51,7 @@ class UsersController < ApplicationController
     if session[:user_id] == @user.id
       session.delete :user
       flash[:notice] = "User was deleted successfully!"
-      render :/
+      render root_url
     end
   end
 

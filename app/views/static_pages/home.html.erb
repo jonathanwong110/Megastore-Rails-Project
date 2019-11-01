@@ -2,8 +2,8 @@
 
 <% if logged_in? %>
     <%= link_to "Edit your Profile", edit_user_path(current_user.id) %> <br></br>
-    <%= link_to "Sellers", users_path %> - <%= link_to "View Your Store", user_path(current_user.id) %><br></br>
-    <%= link_to "Products", products_path %> - <%= link_to "Create a New Product", new_user_product_path(@product) %><br></br>
+    <%= link_to "Sellers", users_path %> - <%= link_to "View Your Store", user_products_path(current_user.id, @products) %><br></br> 
+    <%= link_to "Products", products_path %> - <%= link_to "Create a New Product", new_user_product_path(current_user.id) %><br></br>
     <%= link_to "Cart", carts_path %> <br></br>
     <%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
         <input type=submit value='Log Out'>
