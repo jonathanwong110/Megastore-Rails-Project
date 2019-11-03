@@ -47,12 +47,9 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user = User.find(params[:id])
-    if session[:user_id] == @user.id
-      session.delete :user
-      flash[:notice] = "User was deleted successfully!"
-      render root_url
-    end
+    User.find(params[:id]).destroy
+    flash[:notice] = "User was deleted successfully!"
+    redirect_to root_url
   end
 
   private

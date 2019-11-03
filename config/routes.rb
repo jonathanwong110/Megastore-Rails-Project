@@ -9,8 +9,10 @@ Rails.application.routes.draw do
   get '/cart' => 'carts#show', as: 'carts'
   delete '/cartsproduct/:id' => 'carts#delete'
   get '/users/:id/products' => 'users#show'
+  get '/products/reviewed' => 'products#reviewed'
 
-  resources :users do
+
+  resources :users, except: [:show] do
     resources :products
   end
   resources :products

@@ -23,7 +23,7 @@ class CartsController < ApplicationController
       @cart.save
       flash[:notice] = "Product was added successfully to the cart!"
     end
-    redirect_to user_product_path(@product)
+    redirect_to user_product_path(@product.user, @product)
   end
 
   def destroy

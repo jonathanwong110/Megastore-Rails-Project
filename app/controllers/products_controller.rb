@@ -2,8 +2,8 @@ class ProductsController < ApplicationController
   before_action :require_login
   
   def index
-    @products = Product.all
     @user = User.find_by(id: current_user.id)
+    @products = Product.all
   end
 
   def show
@@ -55,6 +55,10 @@ class ProductsController < ApplicationController
     else
       redirect_to root_url
     end
+  end
+
+  def reviewed
+    @products = Product.reviewed.all.uniq
   end
 
   private

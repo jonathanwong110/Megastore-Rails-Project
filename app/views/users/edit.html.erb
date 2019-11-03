@@ -19,6 +19,10 @@
     <%= f.submit %>
 <% end %>
 
+<h2> Delete your Account </h2>
+<b> Are you sure? </b> <br></br>
+<%= link_to "Delete Account", user_path(current_user.id), method: :delete %> <br></br>
+
 <% if @user.errors.any? %>
   <div id="error_explanation">
     <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
