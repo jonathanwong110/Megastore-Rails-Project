@@ -1,23 +1,37 @@
 class SessionsController < ApplicationController
   
-  def new
-  end
-
   def create
-    user = User.find_by(username: params[:session][:username])
-    if user && user.authenticate(params[:session][:password])
-      session[:user_id] = user.id
+    if auth != nil
+      @user = User.find_or_create_by(uid: auth['uid']) do |u|
+      byebug
+      u.username = auth['info']['username']
+      u.password = auth['info']['password']
+      u.uid = auth['info']['uid']
+      end
+      session[:user_id] = @user.id
       redirect_to users_path
     else
-      flash[:message] = "Invalid Username and/or Password. Please try again."
-      render :new
+      @user = User.find_by(username: params[:session][:username])
+      if @user && @user.authenticate(params[:session][:password])
+        session[:user_id] = @user.id
+        redirect_to users_path
+      else
+        flash[:error] = "Incorrect username and/or password. Please try again"
+        render :new
+      end
     end
   end
   
   def destroy
-    if session[:user_id] == current_user.id
-      session.clear
-      redirect_to root_url
-    end
+    reset_session
+    
+    redirect_to root_url
   end
+
+  private
+ 
+  def auth
+    request.env['omniauth.auth']
+  end
+
 end

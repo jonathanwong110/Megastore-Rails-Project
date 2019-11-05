@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   post '/signup' => 'users#create'
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
+  get '/auth/github/callback' => 'sessions#create'
   post '/logout' => 'sessions#destroy'
   get '/cart' => 'carts#show', as: 'carts'
   delete '/cartsproduct/:id' => 'carts#delete'
