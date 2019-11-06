@@ -3,13 +3,12 @@ class SessionsController < ApplicationController
   def create
     if auth != nil
       @user = User.find_or_create_by(uid: auth['uid']) do |u|
-      byebug
       u.username = auth['info']['username']
       u.password = auth['info']['password']
       u.uid = auth['info']['uid']
       end
       session[:user_id] = @user.id
-      redirect_to users_path
+      render root_url
     else
       @user = User.find_by(username: params[:session][:username])
       if @user && @user.authenticate(params[:session][:password])
