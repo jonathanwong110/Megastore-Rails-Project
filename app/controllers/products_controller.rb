@@ -2,7 +2,6 @@ class ProductsController < ApplicationController
   before_action :require_login
   
   def index
-    @user = User.find_by(id: current_user.id)
     @products = Product.all
   end
 
@@ -18,9 +17,9 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-    if @product.valid?
-      @product.save
-      redirect_to products_path
+    @product.user_id = current_user.id
+    if @product.save
+      redirect_to @product
       flash[:notice] = "Product was created successfully!"
     else
       render :new
@@ -37,12 +36,10 @@ class ProductsController < ApplicationController
   def update
     @product = Product.find(params[:id])
     if @product.update(product_params)
-      @product.save
       redirect_to @product
       flash[:notice] = "Product was updated successfully!"
     else
       render :edit
-      flash[:error] = "Please check all fields to make sure they're filled."
     end
   end
 

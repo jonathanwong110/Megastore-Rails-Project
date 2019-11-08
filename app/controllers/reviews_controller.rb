@@ -8,11 +8,13 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
+    @review.user_id = current_user.id
     if @review.valid?(review_params)
       @review.save
       redirect_to user_product_path(@review.product.user, @review.product_id)
       flash[:notice] = "Review was posted!"
     else
+      @product = Product.find(params[:review][:product_id])
       render :new
     end
   end

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :require_login, only: [:index, :show, :edit, :update, :destroy]
+  before_action :require_login, except: [:new, :create]
 
   def index
     @users = User.all
@@ -17,8 +17,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    if @user.valid?
-      @user.save
+    if @user.save
       @cart = Cart.create!(user_id: @user.id)
       session[:user_id] = @user.id
       flash[:notice] = "Registration was successful!"
