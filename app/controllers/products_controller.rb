@@ -20,7 +20,7 @@ class ProductsController < ApplicationController
     @product.user_id = current_user.id
     if @product.save
       redirect_to @product
-      flash[:notice] = "Product was created successfully!"
+      flash[:notice] = "*Product was created successfully!*"
     else
       render :new
     end
@@ -36,7 +36,7 @@ class ProductsController < ApplicationController
     redirect_if_not_owner
     if @product.update(product_params)
       redirect_to @product
-      flash[:notice] = "Product was updated successfully!"
+      flash[:notice] = "*Product was updated successfully!*"
     else
       render :edit
     end
@@ -44,8 +44,9 @@ class ProductsController < ApplicationController
 
   def destroy
     @product = Product.find(params[:id])
+    redirect_if_not_owner
     @product.destroy
-    flash[:notice] = "Product was deleted successfully!"
+    flash[:notice] = "*Product was deleted successfully!*"
     redirect_to products_path
   end
 

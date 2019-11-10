@@ -14,7 +14,7 @@ class CartsController < ApplicationController
     @cart.products << @product
     if @cart.update(cart_params)
       @cart.save
-      flash[:notice] = "Product was added successfully to the cart!"
+      flash[:notice] = "The product was added successfully to the cart!"
     end
     redirect_to user_product_path(@product.user, @product)
   end
@@ -23,7 +23,7 @@ class CartsController < ApplicationController
     @cart = Cart.find_by(user_id: current_user.id)
     @cart.products.destroy_all
     redirect_to carts_path
-    flash[:notice] = "Cart was successfully cleared!"
+    flash[:notice] = "The cart was successfully cleared!"
   end
 
   private

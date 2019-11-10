@@ -20,7 +20,7 @@ class UsersController < ApplicationController
     if @user.save
       @cart = Cart.create!(user_id: @user.id)
       session[:user_id] = @user.id
-      flash[:notice] = "Registration was successful!"
+      flash[:notice] = "*Your registration was successful!*"
       redirect_to users_path
     else
       render :new
@@ -36,7 +36,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     redirect_if_not_user
     if @user.update(user_params)
-      flash[:notice] = "Profile was updated successfully!"
+      flash[:notice] = "*Your profile was updated successfully!*"
       redirect_to users_path
     else
       render :edit
@@ -44,8 +44,10 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    User.find(params[:id]).destroy
-    flash[:notice] = "User was deleted successfully!"
+    @user = User.find(params[:id])
+    redirect_if_not_user
+    @user.destroy
+    flash[:notice] = "*Your account was deleted successfully!*"
     redirect_to root_url
   end
 

@@ -2,7 +2,6 @@ class SessionsController < ApplicationController
   
   def create
     if auth != nil
-      byebug
       @user = User.find_or_create_by(uid: auth['uid']) do |u|
         u.username = auth['info']['nickname']
         u.email = auth['info']['email']
@@ -26,7 +25,6 @@ class SessionsController < ApplicationController
   
   def destroy
     reset_session
-    
     redirect_to root_url
   end
 
