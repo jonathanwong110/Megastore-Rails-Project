@@ -29,15 +29,13 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-    if @user.id != current_user.id
-      redirect_to root_url
-    end
+    redirect_if_not_user
   end
 
   def update
     @user = User.find(params[:id])
+    redirect_if_not_user
     if @user.update(user_params)
-      @user.save
       flash[:notice] = "Profile was updated successfully!"
       redirect_to users_path
     else
@@ -55,6 +53,12 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:username, :email, :password)
+  end
+
+  def redirect_if_not_user
+    if @user.id != current_user.id
+      redirect_back(fallback_location: root_path)
+    end
   end
 
 end

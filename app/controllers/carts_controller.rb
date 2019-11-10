@@ -6,14 +6,7 @@ class CartsController < ApplicationController
     @product = Product.find_by(user_id: current_user.id)
   end
 
-  def edit
-    @cart = Cart.find(params[:id])
-    if @cart.user_id != current_user.id
-      redirect_to root_url
-    end
-  end
-
-  def update
+  def add_to_cart
     carthash = params[:cart]
     product_id = carthash[:product_id]
     @product = Product.find(product_id)
@@ -30,6 +23,7 @@ class CartsController < ApplicationController
     @cart = Cart.find_by(user_id: current_user.id)
     @cart.products.destroy_all
     redirect_to carts_path
+    flash[:notice] = "Cart was successfully cleared!"
   end
 
   private

@@ -9,8 +9,7 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
     @review.user_id = current_user.id
-    if @review.valid?(review_params)
-      @review.save
+    if @review.save
       redirect_to user_product_path(@review.product.user, @review.product_id)
       flash[:notice] = "Review was posted!"
     else
@@ -21,13 +20,14 @@ class ReviewsController < ApplicationController
 
   def edit
     @review = Review.find(params[:id])
+    redirect_if_not_reviewer
   end
 
   def update
     @review = Review.find(params[:id])
     @product = Review.find_by(product_id: current_user.id)
+    redirect_if_not_reviewer
     if @review.update(review_params)
-      @review.save
       redirect_to user_product_path(@review.product.user, @review.product_id)
       flash[:notice] = "Review was updated successfully!"
     else
@@ -38,19 +38,21 @@ class ReviewsController < ApplicationController
   def destroy
     @review = Review.find(params[:id])
     @product = Review.find_by(product_id: current_user.id)
-    if current_user.id == @review.user_id
-      @review.destroy
-      redirect_to user_product_path(@review.product.user, @review.product_id)
-      flash[:notice] = "Review was deleted!"
-    else
-      render :destroy
-    end
+    @review.destroy
+    redirect_to user_product_path(@review.product.user, @review.product_id)
+    flash[:notice] = "Review was deleted!"
   end
 
   private
 
   def review_params
     params.require(:review).permit(:content, :user_id, :product_id)
+  end
+
+  def redirect_if_not_reviewer
+    if @review.user_id != current_user.id
+      redirect_back(fallback_location: root_path)
+    end
   end
 
 end

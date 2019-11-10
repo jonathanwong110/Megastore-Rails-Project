@@ -8,7 +8,8 @@ Rails.application.routes.draw do
   post '/logout' => 'sessions#destroy'
   get '/auth/:provider/callback' => 'sessions#create'
   get '/cart' => 'carts#show', as: 'carts'
-  delete '/cartsproduct/:id' => 'carts#delete'
+  post '/carts/:id' => 'carts#add_to_cart'
+  delete '/cartsproduct/:id' => 'cartproducts#delete', as: 'remove'
   get '/users/:id/products' => 'users#show'
   get '/products/reviewed' => 'products#reviewed'
 
@@ -17,8 +18,8 @@ Rails.application.routes.draw do
     resources :products
   end
   resources :products
-  resources :carts
-  resources :reviews
-  resources :cartproducts
+  resources :carts, only: [:show, :destroy]
+  resources :reviews, except: [:show]
+  resources :cartproducts, only: [:show]
 
 end

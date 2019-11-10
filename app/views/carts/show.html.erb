@@ -6,7 +6,7 @@
 <%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
     <input type=submit value='Log Out'>
 <% end %>
-
+<%= flash[:notice] %> <br></br>
 <h2> View Your Cart </h2>
 
 <%= link_to "Clear Cart", cart_path(current_user), method: :delete %> <br></br>
@@ -19,6 +19,6 @@ ___________________________ <br></br>
     <b> Category: </b> <%= product.category.capitalize %> <br></br>
     <b> Store: </b> <%= link_to product.user.username, user_path(product.user) %> <br></br>
     <%= link_to "View Product", user_product_path(product.user, product) %> <br></br>
-    <%= link_to "Remove from Cart", cartproduct_path(product.id), method: :delete %> <br></br>
+    <%= link_to "Remove from Cart", remove_path(product), method: :delete %> <br></br>
     ___________________________ <br></br>
 <% end %>

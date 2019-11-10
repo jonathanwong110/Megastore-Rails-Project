@@ -14,40 +14,36 @@ ___________________________ <br></br>
 <b> Description: </b> <%= @product.description.capitalize %> <br></br>
 <b> Category: </b> <%= @product.category.capitalize %> <br></br>
 <b> Seller: </b> <%= @product.user.username %> <br></br>
+
 <% if @product.user_id == current_user.id %>
     <%= link_to "Edit Product", edit_user_product_path(@product) %> | 
     <%= link_to "Delete Product", user_product_path(@product.id), method: :delete %> <br></br>
-<% end %>
-
-<% if @product.user_id != current_user.id %>
-    <%= form_for @cart do |f| %>
+    ___________________________ <br></br>
+<% else %>
+    <%= form_for @cart, method: :add_to_cart do |f| %>
         <%= f.hidden_field :product_id, :value => @product.id %>
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
         <%= f.submit "Add to Cart" %>
     <% end %>
-<% end %>
-
-___________________________ <br></br>
-<% if @product.user_id != current_user.id %>
+    ___________________________ <br></br>
     <%= link_to "Write a Review", {:controller => "reviews", :action => "new", :product_id => @product.id } %> <br></br>
+    <br></br>
 <% end %>
-<br></br>
 
 <% if @product.reviews != [] %>
     <h2> List of Reviews for this Product! </h2>
     ___________________________ <br></br>
+    <% @product.reviews.each do |review| %>
+        <br></br>
+        <b> User: </b> <%= review.user.username %> -   
+        <b> Review: </b> <%= review.content %> <br></br>
+        <% if review.user.id == current_user.id %>
+            <%= link_to "Edit Review", edit_review_path(review.id), method: :get %> |
+            <%= link_to "Delete Review", review_path(review.id), method: :delete %> <br></br>
+        <% end %>
+        ___________________________ 
+        <br></br>
+    <% end %>
 <% else %>
     <h2> Be the first to submit a Review for this Product! </h2>
 <% end %>
-
-<% @product.reviews.each do |review| %>
-    <br></br>
-    <b> User: </b> <%= review.user.username %> -   
-    <b> Review: </b> <%= review.content %> <br></br>
-    <% if review.user.id == current_user.id %>
-        <%= link_to "Edit Review", edit_review_path(review.id), method: :get %> |
-        <%= link_to "Delete Review", review_path(review.id), method: :delete %> <br></br>
-    <% end %>
-    ___________________________ 
-    <br></br>
-<% end %>
-

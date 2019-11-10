@@ -28,13 +28,12 @@ class ProductsController < ApplicationController
 
   def edit
     @product = Product.find(params[:id])
-    if @product.user_id != current_user.id
-      redirect_to product_path(@product)
-    end
+    redirect_if_not_owner
   end
 
   def update
     @product = Product.find(params[:id])
+    redirect_if_not_owner
     if @product.update(product_params)
       redirect_to @product
       flash[:notice] = "Product was updated successfully!"
@@ -45,13 +44,9 @@ class ProductsController < ApplicationController
 
   def destroy
     @product = Product.find(params[:id])
-    if @product.user_id == current_user.id
-      @product.destroy
-      flash[:notice] = "Product was deleted successfully!"
-      redirect_to products_path
-    else
-      redirect_to root_url
-    end
+    @product.destroy
+    flash[:notice] = "Product was deleted successfully!"
+    redirect_to products_path
   end
 
   def reviewed
@@ -62,6 +57,12 @@ class ProductsController < ApplicationController
 
   def product_params
     params.require(:product).permit(:title, :price, :description, :category, :user_id)
+  end
+
+  def redirect_if_not_owner
+    if @product.user_id != current_user.id
+      redirect_back(fallback_location: root_path)
+    end
   end
 
 end
