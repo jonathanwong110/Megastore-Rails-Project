@@ -9,8 +9,8 @@
 
 <h2> <%= @user.username %>'s Listings </h2>
 ___________________________ <br></br>
-<% if @products != [] %>
-  <% @products.each do |product| %>
+<% if @user.products != [] %>
+  <% @user.products.each do |product| %>
       <b> Title: </b> <%= product.title.capitalize %> <br></br>
       <b> Price: $</b> <%= product.price %> <br></br>
       <b> Description: </b> <%= product.description.capitalize %> <br></br>
@@ -19,7 +19,11 @@ ___________________________ <br></br>
       ___________________________ <br></br>
   <% end %>
 <% else %>
-  <b> This Seller has not listed any products yet! </b>
+    <% if @user.id == current_user.id %>
+      <b> You have not posted any products yet! </b>
+    <% else %>
+      <b> This Seller has not listed any products yet! </b>
+    <% end %>
 <% end %>
 
 <% if @user.errors.any? %>

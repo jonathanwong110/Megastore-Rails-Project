@@ -2,7 +2,6 @@ class User < ApplicationRecord
     has_secure_password
     has_one :cart
     has_many :user_products
-    has_many :products
     has_many :products, through: :user_products
     has_many :reviews
 
