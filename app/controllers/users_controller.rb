@@ -46,6 +46,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     redirect_if_not_user
     @user.destroy
+    reset_session
     flash[:notice] = "*Your account was deleted successfully!*"
     redirect_to root_url
   end
