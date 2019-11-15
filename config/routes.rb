@@ -23,3 +23,4 @@ Rails.application.routes.draw do
   resources :cartproducts, only: [:show]
 
 end
+

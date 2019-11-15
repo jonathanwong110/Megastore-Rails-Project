@@ -2,7 +2,11 @@ class ProductsController < ApplicationController
   before_action :require_login
   
   def index
-    @products = Product.all
+    if params[:q]
+      @products = Product.where('title LIKE ?', "%" + params[:q] + "%")
+    else
+      @products = Product.all
+    end
   end
 
   def show
@@ -58,7 +62,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:title, :price, :description, :category, :user_id)
+    params.require(:product).permit(:title, :price, :description, :category, :user_id, :q)
   end
 
   def redirect_if_not_owner
