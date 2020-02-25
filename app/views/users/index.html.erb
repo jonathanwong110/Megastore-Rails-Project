@@ -1,10 +1,12 @@
 <%= flash[:notice] %>
 
-<h2 class="heading-for-many">List of Sellers</h2>
+<h2 class="heading-for-many"> List of Sellers </h2>
 
 <div class="users-container">
     <% @users.each do |user| %>
         <div class="user">
-        <b>Seller: </b> <%= link_to user.username, user_products_path(user.id) %> </div>
+        <h4> Seller: <%= link_to user.username, user_products_path(user.id) %>
+        </h4>
+        </div>
     <% end %>
 </div>

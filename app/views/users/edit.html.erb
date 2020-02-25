@@ -2,7 +2,12 @@
 
 <h2> Edit your Account </h2>
 
-  <b>Please note that a password must be entered to submit changes. Please submit the same password if you do not want to change the password.</b> <br></br>
+  <br></br>
+
+  <b>Please note that a password must be entered to submit changes. Please submit the same password if you do not want to change the password. </b>
+    
+  <br></br>
+  <br></br>
 
   <%= form_for @user do |f| %>
       <%= f.label :email, "Email:" %>
@@ -15,6 +20,7 @@
   <br></br>
 
   <h2> Delete your Account </h2>
+  <br></br>
   <b> Are you sure? </b> <br></br>
   <%= link_to "Delete Account", user_path(current_user.id), method: :delete %> <br></br>
 

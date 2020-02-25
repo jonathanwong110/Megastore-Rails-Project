@@ -19,6 +19,12 @@
           <li class="nav-item"> <%= link_to "Products", products_path %> </li>
           <li class="nav-item"> <%= link_to "Create a New Product", new_user_product_path(current_user.id) %> </li>
           <li class="nav-item"> <%= link_to "Sellers", users_path %> </li>
+          <li class="nav-item"> <%= form_tag products_path, method: "get" do %>
+            <%= label_tag(:q, "Search for:") %>
+            <%= text_field_tag(:q) %>
+            <%= submit_tag ("Search"), name: nil %>
+          <% end %>
+          </li>
           <li class="nav-right-side">
             <%= form_tag logout_path do %>
             <input type=submit value='Log Out'>
