@@ -1,12 +1,16 @@
-<h1> Log In </h1>
+<div class="heading-for-one">
 
-<%= form_for(:session, url: login_path) do |f| %>
-    <%= f.label :username, "Username:" %>
-    <%= f.text_field :username %> <br></br>
-    <%= f.label :password, "Password:" %> 
-    <%= f.password_field :password %> <br></br>
-    <%= f.submit "Log In"%>
-<% end %>
+    <h1> Log In </h1>
+
+    <br></br>
+
+    <%= form_for(:session, url: login_path) do |f| %>
+        <%= f.label :username, "Username:" %>
+        <%= f.text_field :username %> <br></br>
+        <%= f.label :password, "Password:" %> 
+        <%= f.password_field :password %> <br></br>
+        <%= f.submit "Log In"%>
+    <% end %>
 
 <br></br>
 
@@ -14,4 +18,6 @@
 
 <%= link_to('Log in with Github!', '/auth/github') %> <br></br>
 
-<%= link_to "Sign Up", signup_path %> <br></br
+<%= link_to "Sign Up", signup_path %> <br></br>
+
+</div>
