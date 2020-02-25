@@ -5,7 +5,8 @@
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #333;
+    background-color: white;
+    border-bottom: solid 1px #bbb
 }
 
 .nav-item {
@@ -14,9 +15,19 @@
     padding: 14px 16px;
     text-decoration: none;
     float: left;
+    border-right: 1px solid #bbb;
 }
 
 .nav-right-side {
+    display: block;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    float: right;
+    border-right: 1px solid #bbb;
+}
+
+.nav-right-side.last-child {
     display: block;
     text-align: center;
     padding: 14px 16px;
