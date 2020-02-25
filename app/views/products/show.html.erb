@@ -1,41 +1,44 @@
 <%= flash[:notice] %> <br></br>
-___________________________ <br></br>
 
-<b> Title: </b> <%= @product.title.capitalize %> <br></br>
-<b> Price: $</b> <%= @product.price %> <br></br>
-<b> Description: </b> <%= @product.description.capitalize %> <br></br>
-<b> Category: </b> <%= @product.category.capitalize %> <br></br>
-<b> Seller: </b> <%= @product.user.username %> <br></br>
+<div class="product-show">
+    <h2> Title: <%= @product.title.capitalize %> </h2> <br></br>
+    <h2> Price: $ <%= @product.price %> </h2> <br></br>
+    <h2> Description: <%= @product.description.capitalize %> </h2> <br></br>
+    <h2> Category: <%= @product.category.capitalize %> </h2> <br></br>
+    <h2> Seller: <%= @product.user.username %> </h2> <br></br>
 
-<% if @product.user_id == current_user.id %>
-    <%= link_to "Edit Product", edit_user_product_path(@product) %> | 
-    <%= link_to "Delete Product", user_product_path(@product.id), method: :delete %> <br></br>
-    ___________________________ <br></br>
-<% else %>
-    <%= form_for @cart, method: :add_to_cart do |f| %>
-        <%= f.hidden_field :product_id, :value => @product.id %>
-        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-        <%= f.submit "Add to Cart" %>
-    <% end %>
-    ___________________________ <br></br>
-    <%= link_to "Write a Review", {:controller => "reviews", :action => "new", :product_id => @product.id } %> <br></br>
-    <br></br>
-<% end %>
-
-<% if @product.reviews != [] %>
-    <h2> List of Reviews for this Product! </h2>
-    ___________________________ <br></br>
-    <% @product.reviews.each do |review| %>
-        <br></br>
-        <b> User: </b> <%= review.user.username %> -   
-        <b> Review: </b> <%= review.content %> <br></br>
-        <% if review.user.id == current_user.id %>
-            <%= link_to "Edit Review", edit_review_path(review.id), method: :get %> |
-            <%= link_to "Delete Review", review_path(review.id), method: :delete %> <br></br>
+    <% if @product.user_id == current_user.id %>
+        <%= link_to "Edit Product", edit_user_product_path(@product) %> | 
+        <%= link_to "Delete Product", user_product_path(@product.id), method: :delete %> <br></br>
+    <% else %>
+        <%= form_for @cart, method: :add_to_cart do |f| %>
+            <%= f.hidden_field :product_id, :value => @product.id %>
+            <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+            <%= f.submit "Add to Cart" %>
         <% end %>
-        ___________________________ 
+        ___________________________ <br></br>
+        <%= link_to "Write a Review", {:controller => "reviews", :action => "new", :product_id => @product.id } %> <br></br>
         <br></br>
     <% end %>
+</div>
+
+<h2 class="heading-for-many"> List of Reviews for this Product! </h2>
+    <% if @product.reviews != [] %>
+        <div class="reviews-container">
+            <% @product.reviews.each do |review| %>
+            <div class="review">
+                <b> User: </b> <%= review.user.username %> -   
+                <b> Review: </b> <%= review.content %>
+                <% if review.user.id == current_user.id %>
+                    <%= link_to "Edit Review", edit_review_path(review.id), method: :get %> |
+                    <%= link_to "Delete Review", review_path(review.id), method: :delete %> <br></br>
+                <% end %>
+            </div>
+        </div>
+    <% end %>
 <% else %>
-    <h2> Be the first to submit a Review for this Product! </h2>
+    <br></br>
+    <br></br>
+    <br></br>
+    <h4 class="heading-for-many"> Be the first to submit a review for this product! </h2>
 <% end %>

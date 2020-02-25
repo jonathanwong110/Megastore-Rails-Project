@@ -29,7 +29,7 @@
     padding: 30px;
 }
 
-.products-container, .users-container {
+.products-container, .users-container, .reviews-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 10px;
@@ -38,7 +38,14 @@
     padding: 40px
 }
 
-.product {
+.heading-for-one, .product, .form-display, .review {
     width: 95%;
     margin: auto;
+    padding: 40px;
+}
+
+.product-show {
+    margin: auto;
+    width: 30%;
+    padding: 10px;
 }
