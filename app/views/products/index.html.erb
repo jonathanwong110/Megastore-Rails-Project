@@ -1,11 +1,3 @@
-<h1> Welcome <%= current_user.username %>! - <%= link_to "Home", root_url %> </h1>
-
-<%= link_to "Sellers", users_path %> - <%= link_to "View Your Store", user_products_path(current_user.id, @product) %><br></br> 
-<%= link_to "Products", products_path %> - <%= link_to "Create a New Product", new_user_product_path(current_user.id) %><br></br>
-<%= link_to "Cart", carts_path %> <br></br>
-<%= form_tag logout_path do %>
-    <input type=submit value='Log Out'>
-<% end %>
 <%= flash[:notice] %>
 
 <h2>List of all Products | <%= link_to "Reviewed Products", products_reviewed_path %> </h2>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title>Megastore</title>
     <%= csrf_meta_tags %>
@@ -7,9 +7,29 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta name="viewport" content="width=device-width, initial-scale=1"
   </head>
 
   <body>
+    <header class="container">
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar navbar-default">
+            <%= link_to "Home", root_url, class: "nav-brand" %>
+          </div>
+          <% if logged_in? %>
+            <%= link_to "Sellers", users_path %>
+            <%= link_to "View Your Store", user_products_path(current_user.id, @product) %>
+            <%= link_to "Products", products_path %>
+            <%= link_to "Create a New Product", new_user_product_path(current_user.id) %>
+            <%= link_to "Cart", carts_path %>
+            <%= form_tag logout_path do %>
+              <input type=submit value='Log Out'>
+            <% end %>
+          <% end %>
+        </div>
+      </nav>
+    </header>
     <%= yield %>
   </body>
 </html>
