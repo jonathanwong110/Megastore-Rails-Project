@@ -11,7 +11,7 @@
             <b> Price: $</b> <%= product.price %> <br></br>
             <b> Description: </b> <%= product.description.capitalize %> <br></br>
             <b> Category: </b> <%= product.category.capitalize %> <br></br>
-            <b> Seller: </b> <%= product.user.username %> <br></br>
+            <b> Seller: </b> <%= link_to product.user.username, user_products_path(product.user) %> <br></br>
             <%= link_to "View Product", user_product_path(product.user, product) %> <br></br>
         </div>
     <% end %>

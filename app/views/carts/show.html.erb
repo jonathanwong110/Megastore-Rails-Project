@@ -1,6 +1,7 @@
 <div class="heading-for-many">
     <h2> View Your Cart </h2>
-    <%= link_to "Clear Cart", cart_path(current_user), method: :delete %> <br></br>
+    <br></br>
+    <%= link_to "Clear Cart", cart_path(current_user), method: :delete %>
 </div>
 
 <div class="products-container">
@@ -10,7 +11,7 @@
             <b> Price: </b> <%= product.price %> <br></br>
             <b> Description: </b> <%= product.description.capitalize %> <br></br>
             <b> Category: </b> <%= product.category.capitalize %> <br></br>
-            <b> Store: </b> <%= link_to product.user.username, user_path(product.user) %> <br></br>
+            <b> Seller: </b> <%= link_to product.user.username, user_path(product.user) %> <br></br>
             <%= link_to "View Product", user_product_path(product.user, product) %> <br></br>
             <%= link_to "Remove from Cart", remove_path(product), method: :delete %> <br></br>
         </div>
