@@ -1,1 +1,44 @@
 @import "bootstrap";
+
+.main-nav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+.nav-item {
+    display: block;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    float: left;
+}
+
+.nav-right-side {
+    display: block;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    float: right;
+}
+
+.heading-for-many {
+    text-align: center;
+    padding: 30px;
+}
+
+.products-container, .users-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    grid-auto-rows: 300px;
+    margin: auto;
+    padding: 40px
+}
+
+.product {
+    width: 95%;
+    margin: auto;
+}

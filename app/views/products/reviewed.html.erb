@@ -1,12 +1,16 @@
-<h2>Reviewed Products | <%= link_to "List of all Products", products_path %> </h2>
-___________________________ <br></br>
+<div class="heading-for-many">
+    <h2>Reviewed Products | <%= link_to "List of all Products", products_path %> </h2>
+</div>
 
-<% @products.each do |product| %>
-    <b> Title: </b> <%= product.title.capitalize %> <br></br>
-    <b> Price: $</b> <%= product.price %> <br></br>
-    <b> Description: </b> <%= product.description.capitalize %> <br></br>
-    <b> Category: </b> <%= product.category.capitalize %> <br></br>
-    <b> Seller: </b> <%= product.user.username %> <br></br>
-    <%= link_to "View Product", user_product_path(product.user, product) %> <br></br>
-    ___________________________ <br></br>
-<% end %>
+<div class="products-container">
+    <% @products.each do |product| %>
+        <div class="product">
+            <b> Title: </b> <%= product.title.capitalize %> <br></br>
+            <b> Price: $</b> <%= product.price %> <br></br>
+            <b> Description: </b> <%= product.description.capitalize %> <br></br>
+            <b> Category: </b> <%= product.category.capitalize %> <br></br>
+            <b> Seller: </b> <%= product.user.username %> <br></br>
+            <%= link_to "View Product", user_product_path(product.user, product) %> <br></br>
+        </div>
+    <% end %>
+</div>
