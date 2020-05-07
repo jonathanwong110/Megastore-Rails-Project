@@ -1,12 +1,24 @@
 <%= flash[:notice] %> <br></br>
 
 <div class="product-show">
-    <h2> Title: <%= @product.title.capitalize %> </h2> <br></br>
-    <h2> Price: $ <%= @product.price %> </h2> <br></br>
-    <h2> Description: <%= @product.description.capitalize %> </h2> <br></br>
-    <h2> Category: <%= @product.category.capitalize %> </h2> <br></br>
-    <h2> Seller: <%= link_to @product.user.username, user_products_path(@product.user) %> </h2> <br></br>
+    <div class="product-image-show">
+        <%= image_tag(@product.image, :size => "300x300") %>
+    </div>
+    <%= @product.category.capitalize %> <br></br>
+    <span>
+        <b> <%= @product.title.capitalize %> </b>
+    </span>
+    <span>
+        <b> $<%= @product.price %> </b>
+    </span>
+    <br></br>
+        <%= @product.description.capitalize %> 
+    <br></br>
+    Seller: <%= link_to @product.user.username, user_products_path(@product.user) %> <br></br>
 
+    </div>
+
+<div class="product-options">
     <% if @product.user_id == current_user.id %>
         <%= link_to "Edit Product", edit_user_product_path(@product) %> | 
         <%= link_to "Delete Product", user_product_path(@product.id), method: :delete %> <br></br>
@@ -22,7 +34,10 @@
     <% end %>
 </div>
 
-<h2 class="heading-for-many"> List of Reviews for this Product! </h2>
+<br></br>
+<br></br>
+
+<h2 class="heading-for-many"> Reviews </h2>
     <% if @product.reviews != [] %>
         <div class="reviews-container">
             <% @product.reviews.each do |review| %>

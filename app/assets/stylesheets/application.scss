@@ -67,11 +67,23 @@
 
 .product-show {
     margin: auto;
-    width: 30%;
+    width: 20%;
     padding: 10px;
+    font-size: 30px;
 }
 
+.product-image-show {
+    position: absolute;
+    left: 150px;
+    margin-right: 150px
+}
 
 span + span {
     margin-left: 100px;
+}
+
+.product-options {
+    margin: auto;
+    width: 20%;
+    padding: 10px;
 }
