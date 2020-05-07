@@ -4,12 +4,25 @@
     <%= link_to "Clear Cart", cart_path(current_user), method: :delete %>
 </div>
 
+<div class="cart-summary">
+    <b> Summary </b>
+    <div class="cart-total-price">
+    ________________ <br>
+        <% @total = [] %>
+        <% @cart.products.uniq.each do |product| %>
+            <% @cart.product_ids.count(product.id)*product.price %>
+            <% @total.push(@cart.product_ids.count(product.id)*product.price) %>
+        <% end %>
+        Total: <b> $<%= @total.sum %> </b> <br>
+    ________________ <br></br>
+    </div>
+</div>
+
 <div class="cartproducts-container">
-    <% @total = [] %>
     <% @cart.products.uniq.each do |product| %>
         <div class="cartproduct">
             <div class="cartproduct-image">
-                <%= image_tag(product.image, :size => "175x175") %>
+                <%= image_tag(product.image, :size => "200x133") %>
             </div>
             <span>
                 <b> <%= product.title.capitalize %> </b>
@@ -25,20 +38,11 @@
             </span2>
             <span2>
                 <b> $<%= @cart.product_ids.count(product.id)*product.price %> </b>
-                <%= @total.push(@cart.product_ids.count(product.id)*product.price) %>
+                <% @total.push(@cart.product_ids.count(product.id)*product.price) %>
             </span2>
             <br></br>
             <%= link_to "View Details", user_product_path(product.user, product) %> <br></br>
             <%= link_to "Remove from Cart", remove_path(product), method: :delete %> <br></br>
         </div>
     <% end %>
-</div>
-
-<div class="cart-summary">
-    <b> Summary </b>
-    <div class="cart-total-price">
-    ________________ <br>
-        Total: <b> $<%= @total.inject{ |sum,x| sum + x } %> </b> <br>
-    ________________ <br></br>
-    </div>
 </div>
