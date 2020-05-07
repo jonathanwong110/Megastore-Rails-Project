@@ -53,7 +53,7 @@
 .products-container, .users-container, .reviews-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-gap: 10px;
+    grid-gap: 150px;
     grid-auto-rows: 300px;
     margin: auto;
     padding: 40px
@@ -69,4 +69,9 @@
     margin: auto;
     width: 30%;
     padding: 10px;
+}
+
+
+span + span {
+    margin-left: 100px;
 }

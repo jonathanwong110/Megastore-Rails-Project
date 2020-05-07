@@ -7,12 +7,18 @@
 <div class="products-container">
     <% @products.each do |product| %>
         <div class="product">
-            <%= product.image %>
-            <b> Title: </b> <%= product.title.capitalize %> <br></br>
-            <b> Price: $</b> <%= product.price %> <br></br>
-            <b> Category: </b> <%= product.category.capitalize %> <br></br>
+            <div class="product-image">
+                <%= image_tag(product.image, :size => "175x175") %>
+            </div>
+            <span>
+                <b> <%= product.title.capitalize %> </b>
+            </span>
+            <span>
+                <b> $<%= product.price %> </b> <br>
+            </span>
+            <%= product.category.capitalize %> <br></br>
             <b> Seller: </b> <%= link_to product.user.username, user_products_path(product.user) %> <br></br>
-            <%= link_to "View Product", user_product_path(product.user, product) %> <br></br>
+            <%= link_to "View Details", user_product_path(product.user, product) %> <br></br>
         </div>
     <% end %>
 </div>
