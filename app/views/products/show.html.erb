@@ -49,6 +49,7 @@
         <div class="review">
             <b> <%= review.user.username %> </b> <br></br>
             <%= review.content %>
+            <br></br>
             <% if review.user.id == current_user.id %>
                 <%= link_to "Edit Review", edit_review_path(review.id), method: :get %> |
                 <%= link_to "Delete Review", review_path(review.id), method: :delete %> <br></br>
@@ -60,5 +61,5 @@
     <br></br>
     <br></br>
     <br></br>
-    <h4 class="heading-for-many"> Be the first to submit a review for this product! </h2>
+    <h4 class="heading-for-many"> Be the first to write a review for this product! </h2>
 <% end %>
