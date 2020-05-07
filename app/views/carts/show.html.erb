@@ -5,6 +5,7 @@
 </div>
 
 <div class="cartproducts-container">
+    <% @total = [] %>
     <% @cart.products.uniq.each do |product| %>
         <div class="cartproduct">
             <div class="cartproduct-image">
@@ -24,8 +25,7 @@
             </span2>
             <span2>
                 <b> $<%= @cart.product_ids.count(product.id)*product.price %> </b>
-                <% @total = [] %>
-                <% @total.push(@cart.product_ids.count(product.id)*product.price)%>
+                <%= @total.push(@cart.product_ids.count(product.id)*product.price) %>
             </span2>
             <br></br>
             <%= link_to "View Details", user_product_path(product.user, product) %> <br></br>
@@ -37,6 +37,8 @@
 <div class="cart-summary">
     <b> Summary </b>
     <div class="cart-total-price">
-        Total: <%= @total.inject{ |sum,x| sum + x } %>
+    ________________ <br>
+        Total: <b> $<%= @total.inject{ |sum,x| sum + x } %> </b> <br>
+    ________________ <br></br>
     </div>
 </div>
