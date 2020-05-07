@@ -37,20 +37,22 @@
 <br></br>
 <br></br>
 
-<h2 class="heading-for-many"> Reviews </h2>
-    <% if @product.reviews != [] %>
-        <div class="reviews-container">
-            <% @product.reviews.each do |review| %>
-            <div class="review">
-                <b> User: </b> <%= review.user.username %> -   
-                <b> Review: </b> <%= review.content %>
-                <% if review.user.id == current_user.id %>
-                    <%= link_to "Edit Review", edit_review_path(review.id), method: :get %> |
-                    <%= link_to "Delete Review", review_path(review.id), method: :delete %> <br></br>
-                <% end %>
-            </div>
+<h2 class="reviews-top"> 
+    Reviews 
+</h2>
+<% if @product.reviews != [] %>
+    <div class="reviews-container">
+        <% @product.reviews.each do |review| %>
+        <div class="review">
+            <b> User: </b> <%= review.user.username %> -   
+            <b> Review: </b> <%= review.content %>
+            <% if review.user.id == current_user.id %>
+                <%= link_to "Edit Review", edit_review_path(review.id), method: :get %> |
+                <%= link_to "Delete Review", review_path(review.id), method: :delete %> <br></br>
+            <% end %>
         </div>
-    <% end %>
+    </div>
+<% end %>
 <% else %>
     <br></br>
     <br></br>
