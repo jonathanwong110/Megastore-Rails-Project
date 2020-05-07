@@ -16,6 +16,7 @@
             <span>
                 <b> $<%= product.price %> </b>
             </span>
+            <br>
             <%= product.category.capitalize %> <br></br>
             <b> Seller: </b> <%= link_to product.user.username, user_products_path(product.user) %> <br></br>
             <%= link_to "View Details", user_product_path(product.user, product) %> <br></br>
