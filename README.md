@@ -4,7 +4,13 @@ MegaStore is a platform where stores can register online to sell their products 
 
 ## Installation
 
-Run rails s to get the server running.
+1.	Clone or download MegaStore.
+2.	Navigate to the MegaStore folder in Terminal
+3.	Run bundle install
+4.	Run rails db:migrate & rails db:seed
+5.	Run rails s
+6.	Open the URL given by rails s in your internet browser.
+
 
 ## Contributing
 
