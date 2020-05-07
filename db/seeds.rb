@@ -14,9 +14,9 @@ Product.create(title: "scarf", price: 10, description: "new", image: "https://ww
 Product.create(title: "jacket", price: 40, description: "new", image: "https://images-na.ssl-images-amazon.com/images/I/71vpN1h03PL._AC_UY679_.jpg", category: "Apparel", user_id: 2)
 
 UserProduct.create(user_id: 1, product_id: 1)
-UserProduct.create(user_id: 1, product_id: 1)
-UserProduct.create(user_id: 2, product_id: 2)
-UserProduct.create(user_id: 2, product_id: 2)
+UserProduct.create(user_id: 1, product_id: 2)
+UserProduct.create(user_id: 2, product_id: 3)
+UserProduct.create(user_id: 2, product_id: 4)
 
 Review.create(content: "The item came in amazing condition", user_id: 1, product_id: 4)
 Review.create(content: "The user shipped it earlier than expected. I would recommend anyone check out this user!", user_id: 2, product_id: 3)
