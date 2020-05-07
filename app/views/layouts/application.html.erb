@@ -20,7 +20,7 @@
           <li class="nav-item"> <%= link_to "Products", products_path %> </li>
           <li class="nav-item"> <%= link_to "Sellers", users_path %> </li>
           <li class="nav-search-item"> <%= form_tag products_path, method: "get" do %>
-            <%= label_tag(:q, "Search for:") %>
+            <%= label_tag(:q, "Search for Products:") %>
             <%= text_field_tag(:q) %>
             <%= submit_tag ("Search"), name: nil %>
           <% end %>

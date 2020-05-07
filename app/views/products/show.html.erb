@@ -28,9 +28,12 @@
             <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
             <%= f.submit "Add to Cart" %>
         <% end %>
-        ___________________________ <br></br>
-        <%= link_to "Write a Review", {:controller => "reviews", :action => "new", :product_id => @product.id } %> <br></br>
+</div>
+<div class="product-write-review">
         <br></br>
+        <br></br>
+        <br></br>
+            <%= link_to "Write a Review", {:controller => "reviews", :action => "new", :product_id => @product.id } %> <br></br>
     <% end %>
 </div>
 
@@ -44,8 +47,8 @@
     <div class="reviews-container">
         <% @product.reviews.each do |review| %>
         <div class="review">
-            <b> User: </b> <%= review.user.username %> -   
-            <b> Review: </b> <%= review.content %>
+            <b> <%= review.user.username %> </b> <br></br>
+            <%= review.content %>
             <% if review.user.id == current_user.id %>
                 <%= link_to "Edit Review", edit_review_path(review.id), method: :get %> |
                 <%= link_to "Delete Review", review_path(review.id), method: :delete %> <br></br>
