@@ -50,7 +50,7 @@
     padding: 30px;
 }
 
-.products-container, .reviews-container {
+.products-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 150px;
@@ -74,7 +74,7 @@
     padding: 40px
 }
 
-.heading-for-one, .product, .form-display, .review {
+.heading-for-one, .product, .form-display, .review, .reviews-top, .product-write-review {
     width: 95%;
     margin: auto;
     padding: 40px;
@@ -115,14 +115,6 @@ span2 + span2 {
     margin: auto;
     width: 20%;
     padding: 10px;
-}
-
-.product-write-review {
-    margin-left: 85px;
-}
-
-.reviews-top {
-    margin-left: 85px
 }
 
 .product-edit {
