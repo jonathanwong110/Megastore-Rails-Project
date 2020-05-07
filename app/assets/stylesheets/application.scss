@@ -67,6 +67,13 @@
     padding: 40px
 }
 
+.cartproducts-container {
+    display: grid;
+    grid-gap: 10px;
+    margin: auto;
+    padding: 40px
+}
+
 .heading-for-one, .product, .form-display, .review {
     width: 95%;
     margin: auto;
@@ -80,7 +87,13 @@
     font-size: 30px;
 }
 
-.product-image-show {
+.cartproduct {
+    width: 95%;
+    margin: auto;
+    padding: 40px;
+}
+
+.product-image-show, .cart-product-image {
     position: absolute;
     left: 150px;
     margin-right: 150px
@@ -88,6 +101,14 @@
 
 span + span {
     margin-left: 100px;
+}
+
+span1 + span1 {
+    margin-left: 65px;
+}
+
+span2 + span2 {
+    margin-left: 7%;
 }
 
 .product-options {
@@ -101,10 +122,15 @@ span + span {
 }
 
 .reviews-top {
-    margin-left: 85px;
+    margin-left: 85px
 }
 
 .product-edit {
     margin-left: 100px;
     margin-top: 100px;
+}
+
+.cart-summary {
+    font-size: 20px;
+    margin-left: 100px;
 }
