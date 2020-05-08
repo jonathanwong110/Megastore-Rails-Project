@@ -27,6 +27,7 @@
             <%= f.hidden_field :product_id, :value => @product.id %>
             <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
             <%= f.submit "Add to Cart" %>
+        <% end %>
     <% end %>
 </div>
 
@@ -34,36 +35,33 @@
 <br></br>
 <br></br>
 
-<% if !@product.review_ids.include?(current_user.id) %>
+<% if !@product.review_ids.include?(current_user.id) && @product.user_id != current_user.id %>
     <div class="product-write-review">
         <%= link_to "Write a Review", {:controller => "reviews", :action => "new", :product_id => @product.id } %> <br></br>
-        <% end %>
     </div>
 <% end %>
 
 <br></br>
 <br></br>
 
-<h2 class="reviews-top"> 
-    Reviews 
-</h2>
+<h2 class="reviews-top"> Reviews </h2>
 <% if @product.reviews != [] %>
     <div class="reviews-container">
         <% @product.reviews.each do |review| %>
-        <div class="review">
-            <b> <%= review.user.username %> </b> <br></br>
-            <%= review.content %>
-            <br></br>
-            <% if review.user.id == current_user.id %>
-                <%= link_to "Edit Review", edit_review_path(review.id), method: :get %> |
-                <%= link_to "Delete Review", review_path(review.id), method: :delete %> <br></br>
-            <% end %>
-        </div>
+            <div class="review">
+                <b> <%= review.user.username %> </b> <br></br>
+                <%= review.content %>
+                <br></br>
+                <% if review.user.id == current_user.id %>
+                    <%= link_to "Edit Review", edit_review_path(review.id), method: :get %> |
+                    <%= link_to "Delete Review", review_path(review.id), method: :delete %> <br></br>
+                <% end %>
+            </div>
+        <% end %>
     </div>
-<% end %>
 <% else %>
     <br></br>
     <br></br>
     <br></br>
-    <h4 class="heading-for-many"> Be the first to write a review for this product! </h2>
+    <h4 class="heading-for-many"> Be the first to write a review for this product! </h4>
 <% end %>

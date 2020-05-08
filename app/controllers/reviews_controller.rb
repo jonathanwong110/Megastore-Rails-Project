@@ -6,6 +6,11 @@ class ReviewsController < ApplicationController
     @review.user_id = current_user.id
     @product = Product.find(params[:product_id])
     if !@product.review_ids.include?(current_user.id)
+      if @product.user_id != current_user.id
+      else
+        redirect_to user_product_path(@product.user_id, @product.id)
+        flash[:notice] = "*You can't submit a review on your own listing!*"
+      end
     else
       redirect_to user_product_path(@product.user_id, @product.id)
       flash[:notice] = "*You've already written a review for this product!*"
