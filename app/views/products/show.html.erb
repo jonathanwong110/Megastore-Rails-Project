@@ -32,7 +32,7 @@
 <br></br>
 <br></br>
 
-<% if @product.review_ids.include?(current_user.id) && @product.user_id != current_user.id %>
+<% if !@product.review_ids.include?(current_user.id) && @product.user_id != current_user.id %>
     <div class="product-write-review">
         <%= link_to "Write a Review", {:controller => "reviews", :action => "new", :product_id => @product.id } %> <br></br>
     </div>

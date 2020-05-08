@@ -29,3 +29,12 @@ Review.create(content: "This became my favorite sweater!", user_id: 2, product_i
 Review.create(content: "Great laptop for anyone who needs a new computer!", user_id: 3, product_id: 6)
 Review.create(content: "I've gotten many compliments on this!", user_id: 4, product_id: 1)
 Review.create(content: "I love coding on this!", user_id: 4, product_id: 5)
+
+UserReview.create(user_id: 1, review_id: 1)
+UserReview.create(user_id: 1, review_id: 2)
+UserReview.create(user_id: 2, review_id: 3)
+UserReview.create(user_id: 2, review_id: 4)
+UserReview.create(user_id: 3, review_id: 5)
+UserReview.create(user_id: 4, review_id: 6)
+
+

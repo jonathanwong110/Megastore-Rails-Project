@@ -21,6 +21,7 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.user_id = current_user.id
     if @review.save
+      current_user.reviews << @review
       redirect_to user_product_path(@review.product.user, @review.product_id)
       flash[:notice] = "*The review was posted!*"
     else
