@@ -74,7 +74,7 @@
     padding: 40px
 }
 
-.heading-for-one, .product, .form-display, .review, .reviews-top, .product-write-review {
+.heading-for-one, .product, .form-display, .review, .reviews-top, .product-write-review, .review-option {
     width: 95%;
     margin: auto;
     padding: 40px;
@@ -100,14 +100,6 @@
 }
 
 span + span {
-    margin-left: 100px;
-}
-
-span1 + span1 {
-    margin-left: 50px;
-}
-
-span2 + span2 {
     margin-left: 7%;
 }
 

@@ -26,7 +26,6 @@ Review.create(content: "The item came in amazing condition", user_id: 1, product
 Review.create(content: "This kept me warm all winter long!", user_id: 1, product_id: 3)
 Review.create(content: "The user shipped it earlier than expected. I would recommend anyone check out this user!", user_id: 2, product_id: 6)
 Review.create(content: "This became my favorite sweater!", user_id: 2, product_id: 5)
-Review.create(content: "Best item I've ever bought online! ", user_id: 3, product_id: 2)
 Review.create(content: "Great laptop for anyone who needs a new computer!", user_id: 3, product_id: 6)
 Review.create(content: "I've gotten many compliments on this!", user_id: 4, product_id: 1)
 Review.create(content: "I love coding on this!", user_id: 4, product_id: 5)

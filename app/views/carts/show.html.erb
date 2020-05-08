@@ -24,19 +24,15 @@
             <div class="cartproduct-image">
                 <%= image_tag(product.image, :size => "200x133") %>
             </div>
-            <span>
-                <b> <%= product.title.capitalize %> </b>
-            </span>
-            <span>
+                <b> <%= product.title.capitalize %> </b> <br>
                 <b> $<%= product.price %> </b>
-            </span>
             <br>
             <%= product.category.capitalize %> <br></br>
             <b> Seller: </b> <%= link_to product.user.username, user_products_path(product.user) %> <br></br>
-            <span2>
+            <span>
                 <b> Qty: </b> <%= @cart.product_ids.count(product.id) %>
-            </span2>
-            <span2>
+            </span>
+            <span>
                 <b> $<%= @cart.product_ids.count(product.id)*product.price %> </b>
                 <% @total.push(@cart.product_ids.count(product.id)*product.price) %>
             </span2>

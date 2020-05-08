@@ -10,12 +10,12 @@ class SessionsController < ApplicationController
       end
       session[:user_id] = @user.id
       Cart.find_or_create_by(user_id: @user.id)
-      redirect_to users_path
+      redirect_to root_path
     else
       @user = User.find_by(username: params[:session][:username])
       if @user && @user.authenticate(params[:session][:password])
         session[:user_id] = @user.id
-        redirect_to users_path
+        redirect_to root_path
       else
         flash[:error] = "Incorrect username and/or password. Please try again"
         render :new

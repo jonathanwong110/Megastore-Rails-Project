@@ -20,7 +20,7 @@ class UsersController < ApplicationController
       @cart = Cart.create!(user_id: @user.id)
       session[:user_id] = @user.id
       flash[:notice] = "*Your registration was successful!*"
-      redirect_to users_path
+      redirect_to root_path
     else
       render :new
     end
