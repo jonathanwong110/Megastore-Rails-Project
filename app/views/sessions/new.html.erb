@@ -1,16 +1,16 @@
 <div class="heading-for-one">
 
-    <h1> Log In </h1>
+  <h1> Log In </h1>
 
-    <br></br>
+  <br></br>
 
-    <%= form_for(:session, url: login_path) do |f| %>
-        <%= f.label :username, "Username:" %>
-        <%= f.text_field :username %> <br></br>
-        <%= f.label :password, "Password:" %> 
-        <%= f.password_field :password %> <br></br>
-        <%= f.submit "Log In"%>
-    <% end %>
+  <%= form_for(:session, url: login_path) do |f| %>
+    <%= f.label :username, "Username:" %>
+    <%= f.text_field :username %> <br></br>
+    <%= f.label :password, "Password:" %> 
+    <%= f.password_field :password %> <br></br>
+    <%= f.submit "Log In"%>
+  <% end %>
 
 <br></br>
 

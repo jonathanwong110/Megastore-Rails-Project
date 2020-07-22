@@ -1,31 +1,30 @@
 <%= flash[:notice] %> <br></br>
 
 <div class="product-show">
-    <div class="product-image-show">
-        <%= image_tag(@product.image, :size => "300x200") %>
-    </div>
-    <%= @product.category.capitalize %> <br></br>
-    <b> <%= @product.title.capitalize %> </b>
-    <br></br>
-    <b> $<%= @product.price %> </b>
-    <br></br>
-        <%= @product.description.capitalize %> 
-    <br></br>
-    Seller: <%= link_to @product.user.username, user_products_path(@product.user) %> <br></br>
-
-    </div>
+  <div class="product-image-show">
+    <%= image_tag(@product.image, :size => "300x200") %>
+  </div>
+  <%= @product.category.capitalize %> <br></br>
+  <b> <%= @product.title.capitalize %> </b>
+  <br></br>
+  <b> $<%= @product.price %> </b>
+  <br></br>
+     <%= @product.description.capitalize %> 
+  <br></br>
+  Seller: <%= link_to @product.user.username, user_products_path(@product.user) %> <br></br>
+</div>
 
 <div class="product-options">
-    <% if @product.user_id == current_user.id %>
-        <%= link_to "Edit Product", edit_user_product_path(@product) %> | 
-        <%= link_to "Delete Product", user_product_path(@product.id), method: :delete %> <br></br>
-    <% else %>
-        <%= form_for @cart, method: :add_to_cart do |f| %>
-            <%= f.hidden_field :product_id, :value => @product.id %>
-            <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-            <%= f.submit "Add to Cart" %>
-        <% end %>
+  <% if @product.user_id == current_user.id %>
+    <%= link_to "Edit Product", edit_user_product_path(@product) %> | 
+    <%= link_to "Delete Product", user_product_path(@product.id), method: :delete %> <br></br>
+  <% else %>
+    <%= form_for @cart, method: :add_to_cart do |f| %>
+      <%= f.hidden_field :product_id, :value => @product.id %>
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+      <%= f.submit "Add to Cart" %>
     <% end %>
+  <% end %>
 </div>
 
 <br></br>
@@ -33,9 +32,9 @@
 <br></br>
 
 <% if @product.user_id != current_user.id %>
-    <div class="product-write-review">
-        <%= link_to "Write a Review", {:controller => "reviews", :action => "new", :product_id => @product.id } %> <br></br>
-    </div>
+  <div class="product-write-review">
+    <%= link_to "Write a Review", {:controller => "reviews", :action => "new", :product_id => @product.id } %> <br></br>
+  </div>
 <% end %>
 
 
@@ -44,26 +43,26 @@
 
 <h2 class="reviews-top"> Reviews </h2>
 <% if @product.reviews != [] %>
-    <div class="reviews-container">
-        <% @product.reviews.each do |review| %>
-            <div class="review">
-                <b> <%= review.user.username %> </b> <br></br>
-                <%= review.content %>
-                <br></br>
-                <% if review.user.id == current_user.id %>
-                    <%= link_to "Edit Review", edit_review_path(review.id), method: :get %> |
-                    <%= link_to "Delete Review", review_path(review.id), method: :delete %> <br></br>
-                <% end %>
-            </div>
+  <div class="reviews-container">
+    <% @product.reviews.each do |review| %>
+      <div class="review">
+        <b> <%= review.user.username %> </b> <br></br>
+        <%= review.content %>
+        <br></br>
+        <% if review.user.id == current_user.id %>
+          <%= link_to "Edit Review", edit_review_path(review.id), method: :get %> |
+          <%= link_to "Delete Review", review_path(review.id), method: :delete %> <br></br>
         <% end %>
-    </div>
-<% else %>
-    <br></br>
-    <br></br>
-    <br></br>
-    <% if @product.user_id != current_user.id %>
-        <h4 class="review-option"> Be the first to write a review for this product! </h4>
-    <% else %>
-        <h4 class="review-option"> No one submitted a review for your product yet! </h4>
+      </div>
     <% end %>
+  </div>
+<% else %>
+  <br></br>
+  <br></br>
+  <br></br>
+  <% if @product.user_id != current_user.id %>
+    <h4 class="review-option"> Be the first to write a review for this product! </h4>
+  <% else %>
+    <h4 class="review-option"> No one submitted a review for your product yet! </h4>
+  <% end %>
 <% end %>

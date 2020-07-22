@@ -3,10 +3,10 @@
 <h2 class="heading-for-many"> List of Sellers </h2>
 
 <div class="users-container">
-    <% @users.each do |user| %>
-        <div class="user">
-        <h4> Seller: <%= link_to user.username, user_products_path(user.id) %>
-        </h4>
-        </div>
-    <% end %>
+  <% @users.each do |user| %>
+    <div class="user">
+    <h4> Seller: <%= link_to user.username, user_products_path(user.id) %>
+    </h4>
+    </div>
+  <% end %>
 </div>
