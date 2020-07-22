@@ -46,15 +46,15 @@
               </a>
             </li>
             <li class="nav-search-item"> <%= form_tag products_path, method: "get" do %>
-              <%= text_field_tag(:q, nil, placeholder: 'Search for a Product')%>
-              <%= submit_tag ("Search"), name: nil %>
+              <%= text_field_tag(:q, nil, placeholder: 'Search for a Product', :class => 'search-input')%>
+              <%= submit_tag ("Search"), :class => 'search-input' %>
             <% end %>
             <li class="nav-right-side-1"> 
               <%= link_to "Cart", carts_path %>
             </li>
             <li class="nav-right-side-2">
               <%= form_tag logout_path do %>
-                <input type=submit value='Log Out'>
+                <input type=submit value='Log Out' class="logout-input">
               <% end %> 
             </li>
           </ul>

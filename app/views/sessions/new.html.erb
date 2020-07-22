@@ -1,23 +1,32 @@
-<div class="heading-for-one">
-
-  <h1> Log In </h1>
+<div class="heading-for-products">
+  <br></br>
+  <ul>
+  <li class="products-tabs">  Log In </li>
 
   <br></br>
 
   <%= form_for(:session, url: login_path) do |f| %>
-    <%= f.label :username, "Username:" %>
-    <%= f.text_field :username %> <br></br>
-    <%= f.label :password, "Password:" %> 
-    <%= f.password_field :password %> <br></br>
-    <%= f.submit "Log In"%>
+    <%= f.label :username, "Username:", class: 'login-input' %>
+    <%= f.text_field :username, class: 'login-input' %> <br></br>
+    <%= f.label :password, "Password:", class: 'login-input'%> 
+    <%= f.password_field :password, class: 'login-input' %> <br></br>
+    <%= f.submit "Log In", :class => 'login-input'%>
   <% end %>
+  </ul>
+</div>
 
 <br></br>
 
 <%= flash[:error] %> <br></br>
 
-<%= link_to('Log in with Github!', '/auth/github') %> <br></br>
+<li class="login-input">
+  <%= link_to('Log in with Github!', '/auth/github') %> 
+</li>
+  
+<br></br>
 
-<%= link_to "Sign Up", signup_path %> <br></br>
+<li class="login-input">
+  <%= link_to "Sign Up", signup_path %>
+</li>
 
-</div>
+<br></br>

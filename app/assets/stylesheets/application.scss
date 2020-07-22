@@ -7,6 +7,7 @@ html, body {
 .navbar {
   color: black !important;
   background-color: #92A8D1;
+  font-size: 25px;
 }
 
 .navbar-brand {
@@ -23,9 +24,9 @@ html, body {
 }
 
 .navbar-nav .nav-item {
-  margin-top: -12px;
+  margin-top: -10px;
   margin-left: 15px;
-  font-size: 16px;
+  font-size: 20px;
 }
 
 .navbar-nav .nav-item a {
@@ -43,10 +44,11 @@ html, body {
   display: block;
   text-align: center;
   padding: 14px 16px;
-  margin-top: -12px;
+  margin-top: -7px;
   text-decoration: none;
   position: absolute;
-  right: 120px;
+  right: 150px;
+  font-size: 20px;
   float: right;
 }
 
@@ -63,15 +65,45 @@ html, body {
 
 .products-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   grid-gap: 5%;
   margin: auto;
   padding: 40px
 }
 
+@media (max-width: 600px) {
+  .products-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 500px) {
+  .products-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 850px) {
+  .products-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1200px) {
+  .products-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (min-width: 1475px) {
+  .products-container {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
 .users-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   grid-gap: 30px;
   margin: 5%;
   padding: 40px
@@ -228,4 +260,19 @@ span + span {
   float: right;
   margin-right: 130px;
   margin-top: -50px;
+}
+
+.statement {
+  margin-left: 8%;
+  font-size: 20px;
+}
+
+.login-input {
+  margin-left: 10%;
+  font-size: 35px;
+  list-style-type: none;
+}
+
+.search-input, .logout-input {
+  font-size: 20px;
 }

@@ -1,14 +1,19 @@
-<div class="heading-for-one">
+  <br></br>
+  <ul>
   <% if !logged_in? %>
     <h1> MegaStore </h1> <br></br>
     <p> <%= link_to "Log In", login_path %> </p> 
     <p> <%= link_to "Sign Up", signup_path %> </p>
   <% else %>
-    <h2> Welcome <%= current_user.username %> </h1>
-    <br></br>
-    <%= link_to "Edit your Profile", edit_user_path(current_user.id) %> <br></br>
-    You currently have <%= current_user.products.length %> products posted on MegaStore and <%= current_user.cart.cart_products.length %> products in your cart!
+    <div class="heading-for-products">
+      <li class="products-tabs"> 
+        Welcome <%= current_user.username %>
+      </li>
+      <li class="products-reviewed"> <%= link_to "Edit your Profile", edit_user_path(current_user.id) %> </li> <br></br>
+      <div class="statement">
+        You currently have <%= current_user.products.length %> products posted on MegaStore and <%= current_user.cart.cart_products.length %> products in your cart!
+      </div>
   <% end %>
-  
-  <%= flash[:notice] %>
+  </ul>
+  <hr class="solid">
 </div>
