@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :require_login, except: [:new, :create]
+  include SessionsHelper
 
   def index
     @users = User.all
@@ -11,7 +12,11 @@ class UsersController < ApplicationController
   end
 
   def new
-    @user = User.new
+    if logged_in?
+      redirect_to root_path
+    else
+      @user = User.new
+    end
   end
 
   def create

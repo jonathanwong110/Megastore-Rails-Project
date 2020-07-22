@@ -1,18 +1,39 @@
-<h1> Create an Account </h1>
+<ul>
+<% if !logged_in? %>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top">
+    <a class="navbar-brand" ><%= link_to "MegaStore", root_url %></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </nav>
+  <div class="heading-for-products">
+    <br></br>
+    <ul>
+    <li class="products-tabs">  Sign Up </li>
 
-<%= form_for @user do |f| %>
-    <%= f.label :username, "Username:" %>
-    <%= f.text_field :username %> <br></br>
-    <%= f.label :email, "Email:" %>
-    <%= f.text_field :email %> <br></br>
-    <%= f.label :password, "Password:" %> 
-    <%= f.password_field :password %> <br></br>
-    <%= f.submit "Sign Up" %>
-<% end %>
+    <br></br>
 
-<br></br>
+    <%= form_for @user do |f| %>
+      <%= f.label :username, "Username:", class: 'login-input' %>
+      <%= f.text_field :username, class: 'login-input' %> <br></br>
+      <%= f.label :email, "Email:", class: 'login-input' %>
+      <%= f.text_field :email, class: 'login-input' %> <br></br>
+      <%= f.label :password, "Password:", class: 'login-input' %> 
+      <%= f.password_field :password, class: 'login-input' %> <br></br>
+      <%= f.submit "Sign Up", :class => 'login-input' %>
+    <% end %>
+    </ul>
+  </div>
 
-<%= link_to "Log In", login_path %> <br></br
+  <br></br>
+  <li class="login-input"> 
+    <%= link_to "Log In", login_path %>
+  </li>
+
+  <br></br>
+  <% end %>
+</ul>
+
 
 <% if @user.errors.any? %>
   <div id="error_explanation">

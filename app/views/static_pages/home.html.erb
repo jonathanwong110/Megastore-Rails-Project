@@ -1,19 +1,33 @@
+<% if !logged_in? %>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top">
+    <a class="navbar-brand" ><%= link_to "MegaStore", root_url %></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <ul>
+      <li class="nav-right-login"> 
+        <%= link_to "Log In", login_path %>
+      </li>
+      <li class="nav-right-signup">
+        <%= link_to "Sign Up", signup_path %> 
+      </li>
+    </ul>
+  </nav>
+  <div class="background-wallpaper">
+    <img src="https://www.frameweb.com/media/files/288288">
+  </div>
+<% else %>
+  <div class="heading-for-products">
   <br></br>
   <ul>
-  <% if !logged_in? %>
-    <h1> MegaStore </h1> <br></br>
-    <p> <%= link_to "Log In", login_path %> </p> 
-    <p> <%= link_to "Sign Up", signup_path %> </p>
-  <% else %>
-    <div class="heading-for-products">
-      <li class="products-tabs"> 
-        Welcome <%= current_user.username %>
-      </li>
-      <li class="products-reviewed"> <%= link_to "Edit your Profile", edit_user_path(current_user.id) %> </li> <br></br>
-      <div class="statement">
-        You currently have <%= current_user.products.length %> products posted on MegaStore and <%= current_user.cart.cart_products.length %> products in your cart!
-      </div>
-  <% end %>
-  </ul>
+    <li class="products-tabs"> 
+      Welcome <%= current_user.username %>
+    </li>
+    <li class="products-reviewed"> <%= link_to "Edit your Profile", edit_user_path(current_user.id) %> </li> <br></br>
+  </div>
   <hr class="solid">
-</div>
+  </ul>
+  <div class="statement">
+    You currently have <%= current_user.products.length %> products posted on MegaStore and <%= current_user.cart.cart_products.length %> products in your cart!
+  </div>
+<% end %>
