@@ -46,7 +46,7 @@
               </a>
             </li>
             <li class="nav-search-item"> <%= form_tag products_path, method: "get" do %>
-              <%= text_field_tag(:q, nil, placeholder: 'Search for a Product', :class => 'search-input')%>
+              <%= text_field_tag(:q, nil, placeholder: ' Search for a Product', :class => 'search-input')%>
               <%= submit_tag ("Search"), :class => 'search-input' %>
             <% end %>
             <li class="nav-right-side-1"> 
