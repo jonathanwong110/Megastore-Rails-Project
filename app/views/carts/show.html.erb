@@ -24,6 +24,7 @@
             <div class="cartproduct-image">
                 <%= image_tag(product.image, :size => "200x133") %>
             </div>
+            <div class="cartproduct-text">
                 <b> <%= product.title.capitalize %> </b> <br>
                 <b> $<%= product.price %> </b>
             <br>
@@ -39,6 +40,7 @@
             <br></br>
             <%= link_to "View Details", user_product_path(product.user, product) %> <br></br>
             <%= link_to "Remove from Cart", remove_path(product), method: :delete %> <br></br>
+        </div>
         </div>
     <% end %>
 </div>

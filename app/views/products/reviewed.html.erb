@@ -1,18 +1,20 @@
 <div class="heading-for-many">
-    <h2>Reviewed Products | <%= link_to "List of all Products", products_path %> </h2>
+  <h2>Reviewed Products | <%= link_to "List of all Products", products_path %> </h2>
 </div>
 
 <div class="products-container">
-    <% @products.each do |product| %>
-        <div class="product">
-            <div class="product-image">
-                <%= image_tag(product.image, :size => "200x133") %>
-            </div>
-            <b> <%= product.title.capitalize %> </b> <br>
-            <b> $<%= product.price %> </b> <br>
-            <%= product.category.capitalize %> <br></br>
-            <b> Seller: </b> <%= link_to product.user.username, user_products_path(product.user) %> <br></br>
-            <%= link_to "View Details", user_product_path(product.user, product) %> <br></br>
-        </div>
-    <% end %>
+  <% @products.each do |product| %>
+    <div class="product">
+      <div class="product-image">
+        <%= image_tag(product.image, :size => "200x133") %>
+      </div>
+      <div class="product-text"
+      <b> <%= product.title.capitalize %> </b> <br>
+      <b> $<%= product.price %> </b> <br>
+      <%= product.category.capitalize %> <br></br>
+      <b> Seller: </b> <%= link_to product.user.username, user_products_path(product.user) %> <br></br>
+      <%= link_to "View Details", user_product_path(product.user, product) %> <br></br>
+      </div>
+    </div>
+  <% end %>
 </div>
