@@ -118,10 +118,34 @@ html, body {
 
 .cartproducts-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 10px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 5%;
   margin: auto;
   padding: 40px
+}
+
+@media (max-width: 899px) {
+  .cartproducts-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .cartproducts-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1200px) {
+  .cartproducts-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1450px) {
+  .cartproducts-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 .heading-for-one, .review, .reviews-top, .product-write-review, .review-option {
@@ -222,7 +246,7 @@ span + span {
   padding: 14px 16px;
   text-decoration: none;
   float: right;
-  margin-right: 100px;
+  margin-right: 5%;
   font-size: 20px;
 }
 
