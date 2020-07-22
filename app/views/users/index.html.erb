@@ -1,6 +1,14 @@
 <%= flash[:notice] %>
 
-<h2 class="heading-for-many"> List of Sellers </h2>
+<div class="heading-for-products">
+  <br></br>
+  <ul>
+  <li class="products-tabs"> 
+    List of Sellers
+  </li>
+  </ul>
+  <hr class="solid">
+</div>
 
 <div class="users-container">
   <% @users.each do |user| %>

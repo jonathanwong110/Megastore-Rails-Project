@@ -5,8 +5,8 @@ html, body {
 }
 
 .navbar {
-  color: white !important;
-  background-color: black !important;
+  color: black !important;
+  background-color: #92A8D1;
 }
 
 .navbar-brand {
@@ -14,7 +14,7 @@ html, body {
 }
 
 .navbar a {
-  color: white !important;
+  color: black !important;
   text-decoration: none !important;
 }
 
@@ -61,15 +61,10 @@ html, body {
   float: right;
 }
 
-.heading-for-many {
-  text-align: center;
-  padding: 30px;
-}
-
 .products-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: 30px;
+  grid-gap: 5%;
   margin: auto;
   padding: 40px
 }
@@ -77,8 +72,8 @@ html, body {
 .users-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: 150px;
-  margin: auto;
+  grid-gap: 30px;
+  margin: 5%;
   padding: 40px
 }
 
@@ -90,7 +85,16 @@ html, body {
   padding: 40px
 }
 
-.heading-for-one, .form-display, .review, .reviews-top, .product-write-review, .review-option {
+.heading-for-one, .review, .reviews-top, .product-write-review, .review-option {
+  width: 95%;
+  margin: auto;
+  padding: 40px;
+  font-family: "Playfair Display", serif;
+  font-size: 48px;
+  font-weight: 700;
+}
+
+.form-display {
   width: 95%;
   margin: auto;
   padding: 40px;
@@ -185,4 +189,43 @@ span + span {
 
 .cart-summary hr.solid {
   border-top: 2px solid grey;
+}
+
+.heading-for-products ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  font-family: "Playfair Display", serif;
+}
+
+.heading-for-products li {
+  display: inline;
+  text-decoration: none;
+  color: black;
+}
+
+.heading-for-products li a {
+  text-decoration: none;
+  color: black;
+}
+
+.products-tabs {
+  font-size: 48px;
+  font-weight: 700;
+  margin-left: 75px;
+  margin-bottom: 30px;
+}
+
+.products-reviewed {
+  font-size: 20px;
+  float: right;
+  margin-right: 130px;
+  margin-top: 30px;
+}
+
+.clear-cart {
+  font-size: 20px;
+  float: right;
+  margin-right: 130px;
+  margin-top: -50px;
 }

@@ -1,7 +1,10 @@
-<div class="heading-for-many">
-  <h2> Your Cart </h2>
+<div class="heading-for-products">
   <br></br>
-  <%= link_to "Clear Cart", cart_path(current_user), method: :delete %>
+  <ul>
+  <li class="products-tabs"> Shopping Cart </h2> <li>
+  <li class="products-reviewed"> <%= link_to "Clear Cart", cart_path(current_user), method: :delete %> </li>
+  <hr class="solid">
+  </ul>
 </div>
 
 <div class="cart-summary">
@@ -43,7 +46,7 @@
       </span2>
       <br></br>
       <%= link_to "View Details", user_product_path(product.user, product) %> <br></br>
-      <%= link_to "Remove from Cart", remove_path(product), method: :delete %> <br></br>
+      <%= link_to "Remove", remove_path(product), method: :delete %> <br></br>
     </div>
     </div>
   <% end %>

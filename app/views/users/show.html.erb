@@ -1,8 +1,15 @@
-<% if @user.id == current_user.id %>
-  <h2 class="heading-for-many"> Your Listings </h2>
-<% else %>
-  <h2 class="heading-for-many"> <%= @user.username %>'s Listings </h2>
-<% end %>
+<div class="heading-for-products">
+  <br></br>
+  <ul>
+    <% if @user.id == current_user.id %>
+      <li class="products-tabs"> Your Listings </li>
+    <% else %>
+      <li class="products-tabs"> <%= @user.username %>'s Listings </li>
+    <% end %>
+    <hr class="solid">
+  </ul>
+</div>
+
 
 <div class="products-container">
   <% if @user.products != [] %>

@@ -1,4 +1,10 @@
-<h2 class="heading-for-one"> Create a Product </h2> 
+<div class="heading-for-products">
+  <br></br>
+  <ul>
+    <li class="products-tabs"> Create a Product </li>
+    <hr class="solid">
+  </ul>
+</div>
 
 <div class="form-display">
   <%= render 'form' %>
@@ -7,7 +13,6 @@
 <% if @product.errors.any? %>
   <div id="error_explanation">
     <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
- 
     <ul>
     <% @product.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>

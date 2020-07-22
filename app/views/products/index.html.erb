@@ -1,7 +1,15 @@
 <%= flash[:notice] %>
 
-<div class="heading-for-many">
-  <h2>List of all Products | <%= link_to "Reviewed Products", products_reviewed_path %> </h2>
+<div class="heading-for-products">
+  <br></br>
+  <ul>
+  <li class="products-tabs"> 
+      Latest Products
+  </li>
+    <li class="products-reviewed"> <%= link_to "Reviewed", products_reviewed_path %> </li>
+    <li class="products-reviewed"> <%= link_to "All", products_path %> </li>
+  </ul>
+  <hr class="solid">
 </div>
 
 <div class="products-container">
@@ -12,12 +20,12 @@
       </div>
       <br>
       <div class="product-text">
-      <b> <%= product.title.capitalize %> </b> <br>
-      <b> $<%= product.price %> </b>
-      <br>
-      <%= product.category.capitalize %> <br></br>
-      <b> Seller: </b> <%= link_to product.user.username, user_products_path(product.user) %> <br></br>
-      <%= link_to "View Details", user_product_path(product.user, product) %> 
+        <b> <%= product.title.capitalize %> </b> <br>
+        <b> $<%= product.price %> </b>
+        <br>
+        <%= product.category.capitalize %> <br></br>
+        <b> Seller: </b> <%= link_to product.user.username, user_products_path(product.user) %> <br></br>
+        <%= link_to "View Details", user_product_path(product.user, product) %> 
       </div>
     </div>
   <% end %>
