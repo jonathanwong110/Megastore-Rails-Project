@@ -174,15 +174,15 @@ span + span {
 }
 
 .cart-summary {
-  font-size: 20px;
-  margin-left: 100px;
-}
-
-.cart-summary {
   display: block;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
   float: right;
-  margin-right: 30px;
+  margin-right: 100px;
+  font-size: 20px;
+}
+
+.cart-summary hr.solid {
+  border-top: 2px solid grey;
 }

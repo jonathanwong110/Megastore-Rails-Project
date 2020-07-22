@@ -5,16 +5,20 @@
 </div>
 
 <div class="cart-summary">
-  <b> Summary </b>
+  <% @all = [] %>
+  <% @cart.products.each do |product| %>
+    <% @all.push(product) %>
+  <% end %>
+  <b> Order Summary: </b> <b> <%= @all.length %> Items </b>
+  <hr class="solid">
   <div class="cart-total-price">
-  ________________ <br>
     <% @total = [] %>
     <% @cart.products.uniq.each do |product| %>
       <% @cart.product_ids.count(product.id)*product.price %>
       <% @total.push(@cart.product_ids.count(product.id)*product.price) %>
     <% end %>
-    Total: <b> $<%= @total.sum %> </b> <br>
-  ________________ <br></br>
+    <b> Order Total: $<%= @total.sum %> </b>
+    <hr class="solid">
   </div>
 </div>
 
