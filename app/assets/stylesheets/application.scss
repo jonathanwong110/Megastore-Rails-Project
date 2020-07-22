@@ -79,12 +79,34 @@ html, body {
   float: right;
 }
 
-@media (max-width: 1450px) {
+@media (max-width: 768px) {
   .nav-right-side-1 {
-    margin-right: 2.5%;
+    margin-right: 8%;
   }
 }
 
+@media (min-width: 769px) {
+  .nav-right-side-1 {
+    margin-right: 4%;
+  }
+}
+
+@media (min-width: 1450px) {
+  .nav-right-side-1 {
+    margin-right: 2.5%;
+    right: 7%;
+  }
+}
+
+@media (min-width: 1900px) {
+  .nav-right-side-1 {
+    margin-right: 2.5%;
+    right: 3%;
+  }
+  .nav-right-side-2 {
+    margin-top: -0.5%;
+  }
+}
 
 .products-container {
   display: grid;
@@ -331,6 +353,24 @@ span + span {
 
 .search-input, .logout-input {
   font-size: 20px;
+}
+
+@media (max-width: 767px) {
+  .nav-right-login {
+    margin-right: 4%;
+  }
+}
+
+@media (max-width: 1450px) {
+  .nav-right-login {
+    margin-right: 4%;
+  }
+}
+
+@media (min-width: 1451px) {
+  .nav-right-login, .nav-right-signup {
+    top: 25px;
+  }
 }
 
 .nav-right-login {
