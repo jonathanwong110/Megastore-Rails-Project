@@ -7,32 +7,61 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <meta name="viewport" content="width=device-width, initial-scale=1"
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
   </head>
 
   <body>
     <header>
-      <div class="main-nav">
-        <% if logged_in? %>
-          <li class="nav-item"> <%= link_to "Home", root_url %> </li>
-          <li class="nav-item"> <%= link_to "View Your Store", user_products_path(current_user.id) %> </li>
-          <li class="nav-item"> <%= link_to "Create a New Product", new_user_product_path(current_user.id) %> </li>
-          <li class="nav-item"> <%= link_to "Products", products_path %> </li>
-          <li class="nav-item"> <%= link_to "Sellers", users_path %> </li>
+      <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
+      <a class="navbar-brand" ><%= link_to "MegaStore", root_url %></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link">
+              <%= link_to "Your Store", user_products_path(current_user.id) %> 
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link">
+              <%= link_to "New Product", new_user_product_path(current_user.id) %> 
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link">
+              <%= link_to "Products", products_path %> </li> 
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link">
+              <%= link_to "Sellers", users_path %> 
+            </a>
+          </li>
           <li class="nav-search-item"> <%= form_tag products_path, method: "get" do %>
-            <%= label_tag(:q, "Search for Products:") %>
-            <%= text_field_tag(:q) %>
+            <%= text_field_tag(:q, nil, placeholder: 'Search for a Product')%>
             <%= submit_tag ("Search"), name: nil %>
           <% end %>
+          <li class="nav-right-side-1"> 
+            <%= link_to "Cart", carts_path %>
           </li>
-          <li class="nav-right-side">
+          <li class="nav-right-side-2">
             <%= form_tag logout_path do %>
-            <input type=submit value='Log Out'>
-          <% end %> </li>
-          <li class="nav-right-side"> <%= link_to "Cart", carts_path %> </li>
-        <% end %>
-      </div>
+              <input type=submit value='Log Out'>
+            <% end %> 
+          </li>
+        </ul>
+      </div>  
+    </nav>
     </header>
+    <br></br>
+    <br></br>
     <%= yield %>
   </body>
 </html>
