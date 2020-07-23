@@ -196,6 +196,16 @@ html, body {
   padding: 40px
 }
 
+.user a {
+  color: black;
+  text-decoration: none;
+}
+
+.user a:hover {
+  color: black;
+  text-decoration: none;
+}
+
 .cartproducts-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -412,6 +422,7 @@ span + span {
 .review-to-write a {
   font-size: 30px;
   color: black;
+  font-family: "Playfair Display", serif;
 }
 
 .review-to-write a:hover {
