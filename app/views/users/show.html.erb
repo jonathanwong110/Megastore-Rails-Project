@@ -1,10 +1,10 @@
-<div class="heading-for-products">
+<div class="general-heading-spacing">
   <br></br>
   <ul>
     <% if @user.id == current_user.id %>
-      <li class="products-tabs"> Your Listings </li>
+      <li class="heading-tabs"> Your Listings </li>
     <% else %>
-      <li class="products-tabs"> <%= @user.username %>'s Listings </li>
+      <li class="heading-tabs"> <%= @user.username %>'s Listings </li>
     <% end %>
     <hr class="solid">
   </ul>
