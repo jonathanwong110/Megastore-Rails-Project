@@ -16,7 +16,6 @@
   </head>
 
   <body>
-    <header>
       <% if current_user != nil %>
         <nav class="navbar navbar-expand-md navbar-dark fixed-top">
         <a class="navbar-brand" ><%= link_to "MegaStore", root_url %></a>
@@ -46,8 +45,8 @@
               </a>
             </li>
             <li class="nav-search-item"> <%= form_tag products_path, method: "get" do %>
-              <%= text_field_tag(:q, nil, placeholder: ' Search for a Product', :class => 'search-input')%>
-              <%= submit_tag ("Search"), :class => 'search-input' %>
+              <span><%= text_field_tag(:q, nil, placeholder: ' Search for a Product', :class => 'search-input')%>
+              <%= submit_tag ("Search"), :class => 'search-input-button' %></span>
             <% end %>
             <li class="nav-right-side-1"> 
               <%= link_to "Cart", carts_path %>
@@ -61,7 +60,6 @@
         </div>
       </nav>
     <% end %>
-    </header>
     <br></br>
     <br></br>
     <%= yield %>

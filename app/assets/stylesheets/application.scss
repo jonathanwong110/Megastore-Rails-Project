@@ -56,6 +56,21 @@ html, body {
   color: #007bff;
 }
 
+.search-input {
+  width: 200px;
+}
+
+@media (min-width: 767px) and (max-width: 1050px ) {
+  .search-input {
+    width: 100px;
+  }  
+}
+
+.search-input-button {
+  font-size: 20px;
+  max-width: 75px;
+}
+
 .nav-right-side-1 {
   display: block;
   text-align: center;
@@ -108,46 +123,46 @@ html, body {
   }
 }
 
-@media (max-width: 767px) {
-  .nav-right-login {
-    margin-right: 4%;
-  }
-}
+// @media (max-width: 767px) {
+//   .nav-right-login {
+//     margin-right: 4%;
+//   }
+// }
 
-@media (max-width: 1450px) {
-  .nav-right-login {
-    margin-right: 4%;
-  }
-}
+// @media (max-width: 1450px) {
+//   .nav-right-login {
+//     margin-right: 4%;
+//   }
+// }
 
-@media (min-width: 1451px) {
-  .nav-right-login, .nav-right-signup {
-    top: 25px;
-  }
-}
+// @media (min-width: 1451px) {
+//   .nav-right-login, .nav-right-signup {
+//     top: 25px;
+//   }
+// }
 
 .nav-right-login {
   display: block;
   text-align: center;
   padding: 14px 16px;
-  margin-top: -1.2%;
   text-decoration: none;
   position: absolute;
-  right: 8%;
+  right: 150px;
   font-size: 20px;
   float: right;
+  bottom: 1px;
 }
 
 .nav-right-signup {
   display: block;
   text-align: center;
   padding: 14px 16px;
-  margin-top: -1.2%;
   text-decoration: none;
   position: absolute;
-  right: 2%;
+  right: 50px;
   float: right;
   font-size: 20px;
+  bottom: 1px;
 }
 
 .products-container {
