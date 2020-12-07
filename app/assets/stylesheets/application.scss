@@ -72,7 +72,7 @@ html, body {
   max-width: 75px;
 }
 
-.nav-right-side-1, .nav-right-login {
+.nav-right-login {
   position: absolute;
   display: block;
   text-decoration: none;
@@ -81,7 +81,16 @@ html, body {
   font-size: 20px;
 }
 
-.nav-right-side-2, .nav-right-signup {
+.nav-right-side-cart {
+  position: absolute;
+  display: block;
+  text-decoration: none;
+  right: 125px;
+  top: 12px;
+  font-size: 20px;
+}
+
+.nav-right-side-logout, .nav-right-signup {
   position: absolute;
   display: block;
   text-decoration: none;
@@ -91,11 +100,11 @@ html, body {
 }
 
 @media(max-width: 991px) {
-  .nav-right-side-1 {
+  .nav-right-side-cart {
     display: block;
-    top: 60px;
+    top: 63px;
   }
-  .nav-right-side-2 {
+  .nav-right-side-logout {
     display: block;
     top: 60px;
   }

@@ -48,10 +48,10 @@
             <span><%= text_field_tag(:q, nil, placeholder: ' Search for a Product', :class => 'search-input')%>
             <%= submit_tag ("Search"), :class => 'search-input-button' %></span>
           <% end %>
-          <li class="nav-right-side-1"> 
+          <li class="nav-right-side-cart"> 
             <%= link_to "Cart", carts_path %>
           </li>
-          <li class="nav-right-side-2">
+          <li class="nav-right-side-logout">
             <%= form_tag logout_path do %>
               <input type=submit value='Log Out' class="logout-input">
             <% end %> 
