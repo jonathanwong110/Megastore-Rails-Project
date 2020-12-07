@@ -4,15 +4,17 @@
   <div class="product-image-show">
     <%= image_tag(@product.image, :size => "300x200") %>
   </div>
-  <%= @product.category.capitalize %> <br></br>
-  <b> <%= @product.title.capitalize %> </b>
-  <br></br>
-  <b> $<%= @product.price %> </b>
-  <br></br>
-     <%= @product.description.capitalize %> 
-  <br></br>
-  <div class="product-seller">
-    Seller: <%= link_to @product.user.username, user_products_path(@product.user) %> 
+  <div class="product-details-show">
+    <%= @product.category.capitalize %> <br></br>
+    <b> <%= @product.title.capitalize %> </b>
+    <br></br>
+    <b> $<%= @product.price %> </b>
+    <br></br>
+       <%= @product.description.capitalize %> 
+    <br></br>
+    <div class="product-seller">
+      Seller: <%= link_to @product.user.username, user_products_path(@product.user) %> 
+    </div>
   </div>
   <br></br>
 </div>

@@ -13,8 +13,15 @@
 <div class="users-container">
   <% @users.each do |user| %>
     <div class="user">
-      <h4> Seller: <%= link_to user.username, user_products_path(user.id) %>
-      </h4>
+      <h4> Seller: </h4>
+      <div class="user-information">
+        <h5>
+          <%= link_to user.username, user_products_path(user.id) %>
+        </h5>
+        <p>
+          Items: <%= user.products.length %>
+        </p>
+      </div>
     </div>
   <% end %>
 </div>
