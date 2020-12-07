@@ -20,7 +20,10 @@
     <li class="heading-tabs"> 
       Welcome <%= current_user.username %>
     </li>
-    <li class="products-reviewed"> <%= link_to "Edit your Profile", edit_user_path(current_user.id) %> </li> <br></br>
+    <br></br>
+    <div class="subheading-tabs"> 
+      <%= link_to "Edit your Profile", edit_user_path(current_user.id) %>
+    </div> 
   </div>
   <hr class="solid">
   </ul>

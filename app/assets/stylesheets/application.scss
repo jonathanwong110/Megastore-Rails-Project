@@ -377,6 +377,18 @@ span + span {
 .subheading-tabs {
   max-width: 800px;
   margin-left: 5%;
+  margin-right: 5%;
+  color: black;
+  text-decoration: none;
+}
+
+.subheading-tabs a {
+  color: black;
+}
+
+.subheading-tabs a:hover {
+  color: black;
+  text-decoration: none;
 }
 
 .products-all-1 {
