@@ -2,7 +2,9 @@
   <br></br>
   <ul>
   <li class="heading-tabs"> Shopping Cart </h2> <li>
-  <li class="products-reviewed"> <%= link_to "Clear Cart", cart_path(current_user), method: :delete %> </li>
+  <li class="clear-cart"> 
+    <%= link_to "Clear Cart", cart_path(current_user), method: :delete %> 
+  </li>
   <hr class="solid">
   </ul>
 </div>
